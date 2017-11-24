@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="icon" type="image/x-icon" href="./assets/img/FyG-lupa.png">
+  <title>FyGSigma</title>
+  <style media="screen">
+    #app{
+      height: 100vh;
+    }
+    #map{
+      height: 100%;
+    }
+    html, body{
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+  <script type="text/javascript" src="bundle.js"></script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCp3MyOjVXkmtK9oZmBAwhL5nyhq6U88wc&callback=initMap">//Se carga la Maps Javascript API usando la etiqueta
+    // async permite que el navegador represente el resto del sitio web
+    ////mientras se carga la Maps JavaScritp API
+    //key contiene la clave API
+  </script>
+</body>
+</html>
