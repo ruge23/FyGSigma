@@ -1536,52 +1536,6 @@ module.exports = ReactPropTypesSecret;
 
 /***/ }),
 /* 21 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-function checkDCE() {
-  /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */
-  if (
-    typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === 'undefined' ||
-    typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== 'function'
-  ) {
-    return;
-  }
-  if (process.env.NODE_ENV !== 'production') {
-    // This branch is unreachable because this function is only called
-    // in production, but the condition is true only in development.
-    // Therefore if the branch is still here, dead code elimination wasn't
-    // properly applied.
-    // Don't change the message. React DevTools relies on it. Also make sure
-    // this message doesn't occur elsewhere in this function, or it will cause
-    // a false positive.
-    throw new Error('^_^');
-  }
-  try {
-    // Verify that the code above has been dead code eliminated (DCE'd).
-    __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE(checkDCE);
-  } catch (err) {
-    // DevTools shouldn't crash React, no matter what.
-    // We should still report in case we break this code.
-    console.error(err);
-  }
-}
-
-if (process.env.NODE_ENV === 'production') {
-  // DCE check should happen before ReactDOM bundle executes so that
-  // DevTools can report bad minification during injection.
-  checkDCE();
-  module.exports = __webpack_require__(53);
-} else {
-  module.exports = __webpack_require__(56);
-}
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
-/* 22 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1672,7 +1626,7 @@ function mapAsync(array, work, callback) {
 }
 
 /***/ }),
-/* 23 */
+/* 22 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1685,7 +1639,7 @@ function mapAsync(array, work, callback) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prop_types__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_prop_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__getRouteParams__ = __webpack_require__(70);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ContextUtils__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ContextUtils__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__RouteUtils__ = __webpack_require__(7);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -1802,7 +1756,7 @@ var RouterContext = __WEBPACK_IMPORTED_MODULE_2_create_react_class___default()({
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
 
 /***/ }),
-/* 24 */
+/* 23 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1927,7 +1881,7 @@ function ContextSubscriber(name) {
 }
 
 /***/ }),
-/* 25 */
+/* 24 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1956,7 +1910,7 @@ var locationShape = Object(__WEBPACK_IMPORTED_MODULE_0_prop_types__["shape"])({
 });
 
 /***/ }),
-/* 26 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1986,7 +1940,7 @@ exports.default = runTransitionHook;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 27 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1998,7 +1952,7 @@ var _AsyncUtils = __webpack_require__(81);
 
 var _PathUtils = __webpack_require__(8);
 
-var _runTransitionHook = __webpack_require__(26);
+var _runTransitionHook = __webpack_require__(25);
 
 var _runTransitionHook2 = _interopRequireDefault(_runTransitionHook);
 
@@ -2168,7 +2122,7 @@ var createHistory = function createHistory() {
 exports.default = createHistory;
 
 /***/ }),
-/* 28 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2178,7 +2132,7 @@ exports.__esModule = true;
 var canUseDOM = exports.canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
 
 /***/ }),
-/* 29 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2195,7 +2149,7 @@ var _DOMStateStorage = __webpack_require__(46);
 
 var _PathUtils = __webpack_require__(8);
 
-var _ExecutionEnvironment = __webpack_require__(28);
+var _ExecutionEnvironment = __webpack_require__(27);
 
 var PopStateEvent = 'popstate';
 var HashChangeEvent = 'hashchange';
@@ -2281,6 +2235,52 @@ var replaceLocation = exports.replaceLocation = function replaceLocation(locatio
 var go = exports.go = function go(n) {
   if (n) window.history.go(n);
 };
+
+/***/ }),
+/* 29 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+function checkDCE() {
+  /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */
+  if (
+    typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === 'undefined' ||
+    typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== 'function'
+  ) {
+    return;
+  }
+  if (process.env.NODE_ENV !== 'production') {
+    // This branch is unreachable because this function is only called
+    // in production, but the condition is true only in development.
+    // Therefore if the branch is still here, dead code elimination wasn't
+    // properly applied.
+    // Don't change the message. React DevTools relies on it. Also make sure
+    // this message doesn't occur elsewhere in this function, or it will cause
+    // a false positive.
+    throw new Error('^_^');
+  }
+  try {
+    // Verify that the code above has been dead code eliminated (DCE'd).
+    __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE(checkDCE);
+  } catch (err) {
+    // DevTools shouldn't crash React, no matter what.
+    // We should still report in case we break this code.
+    console.error(err);
+  }
+}
+
+if (process.env.NODE_ENV === 'production') {
+  // DCE check should happen before ReactDOM bundle executes so that
+  // DevTools can report bad minification during injection.
+  checkDCE();
+  module.exports = __webpack_require__(53);
+} else {
+  module.exports = __webpack_require__(56);
+}
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
 /* 30 */
@@ -2612,9 +2612,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Route", function() { return __WEBPACK_IMPORTED_MODULE_7__Route__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__RouteUtils__ = __webpack_require__(7);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "createRoutes", function() { return __WEBPACK_IMPORTED_MODULE_8__RouteUtils__["b"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__RouterContext__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__RouterContext__ = __webpack_require__(22);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "RouterContext", function() { return __WEBPACK_IMPORTED_MODULE_9__RouterContext__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__PropTypes__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__PropTypes__ = __webpack_require__(24);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "locationShape", function() { return __WEBPACK_IMPORTED_MODULE_10__PropTypes__["a"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "routerShape", function() { return __WEBPACK_IMPORTED_MODULE_10__PropTypes__["b"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__match__ = __webpack_require__(77);
@@ -3002,8 +3002,8 @@ function assignRouterState(router, _ref) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_prop_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_invariant__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_invariant__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__PropTypes__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ContextUtils__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__PropTypes__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ContextUtils__ = __webpack_require__(23);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
@@ -3275,7 +3275,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _queryString = __webpack_require__(78);
 
-var _runTransitionHook = __webpack_require__(26);
+var _runTransitionHook = __webpack_require__(25);
 
 var _runTransitionHook2 = _interopRequireDefault(_runTransitionHook);
 
@@ -3400,7 +3400,7 @@ exports.__esModule = true;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _runTransitionHook = __webpack_require__(26);
+var _runTransitionHook = __webpack_require__(25);
 
 var _runTransitionHook2 = _interopRequireDefault(_runTransitionHook);
 
@@ -3650,7 +3650,7 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(21);
+var _reactDom = __webpack_require__(29);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -3660,6 +3660,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+//////////////////////////////////////////////////////////////////////////////////////////////
 var lineCoordinates = [{ lat: -38.850271, lng: -69.334857 }, { lat: -38.831876, lng: -69.118508 }, { lat: -38.934777, lng: -69.123027 }, { lat: -38.926690, lng: -69.291851 }, { lat: -38.850271, lng: -69.334857 }];
 
 var markers = [{ lat: -38.920635, lng: -69.280765 }, { lat: -38.912768, lng: -69.219940 }, { lat: -38.910736, lng: -69.174527 }, { lat: -38.860027, lng: -69.207615 }];
@@ -3670,8 +3671,8 @@ var config = {
     lng: -69.214060
   },
   zoom: 12
+  ////////////////////////////////////////////////////////////////////////////////////////////////////
 };
-
 var Map = function (_React$Component) {
   _inherits(Map, _React$Component);
 
@@ -3680,7 +3681,9 @@ var Map = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (Map.__proto__ || Object.getPrototypeOf(Map)).call(this, props));
 
-    _this.state = {};
+    _this.state = {
+      markers: []
+    };
     return _this;
   }
 
@@ -3690,54 +3693,97 @@ var Map = function (_React$Component) {
       var _this2 = this;
 
       window.initMap = function () {
+
         _this2.map = new google.maps.Map(document.getElementById('map'), {
-          center: { lat: -39.064064, lng: -69.5903451 },
-          zoom: 9,
-          mapTypeId: 'satellite'
-        });
-        //console.log(this)
-        _this2.polygon = new google.maps.Polygon({
-          strokeColor: '#155fd6',
-          strokeOpacity: 0.5,
-          strokeWeight: 3,
-          fillColor: '#155fd6',
-          fillOpacity: 0.2
+          center: { lat: -38.879376, lng: -69.214060 },
+          zoom: 10,
+          mapTypeId: 'satellite',
+          disableDefaultUI: true
         });
 
-        _this2.polygon.setPath(lineCoordinates);
-        _this2.polygon.setMap(_this2.map);
-        _this2.polygon.addListener('click', function () {
-          return _this2.reDrawMap(config.center, config.zoom, lineCoordinates);
-        });
+        _this2.markers = [];
+
+        _this2.polygon = [];
+
+        _this2.createPolygon(lineCoordinates);
       };
+    }
+  }, {
+    key: 'createPolygon',
+    value: function createPolygon(path) {
+      var _this3 = this;
+
+      this.polygon.push(new google.maps.Polygon({
+        strokeColor: '#043789',
+        strokeOpacity: 0.8,
+        strokeWeight: 3,
+        fillColor: '#043789',
+        fillOpacity: 0.5
+      }));
+      for (var i = 0; i < this.polygon.length; i++) {
+        this.polygon[i].setPath(path);
+        this.polygon[i].setMap(this.map);
+        this.polygon[i].addListener('click', function () {
+          return _this3.reDrawMap(config.center, config.zoom, lineCoordinates);
+        });
+      }
+    }
+  }, {
+    key: 'createMarkers',
+    value: function createMarkers(markers) {
+      var _this4 = this;
+
+      for (var i = 0; i < markers.length; i++) {
+        this.markers.push(new google.maps.Marker({
+          position: markers[i],
+          map: this.map,
+          animation: google.maps.Animation.DROP
+        })); //cooregir position(ultimo siempre)
+        this.markers[this.markers.length - 1].addListener('click', function () {
+          return _this4.reDrawMarkers(_this4.markers[_this4.markers.length - 1].position, 18);
+        });
+      }
     }
   }, {
     key: 'reDrawMap',
     value: function reDrawMap(center, zoom, path) {
-      this.polygon.setPath(path);
+      //console.log(this);
       var pt = new google.maps.LatLng(center.lat, center.lng);
       this.map.setCenter(pt);
       this.map.setZoom(zoom);
       this.drop();
     }
   }, {
+    key: 'reDrawMarkers',
+    value: function reDrawMarkers(center, zoom) {
+      //console.log(this.markers)
+      this.clearPolygon();
+      this.map.setCenter(center);
+      this.map.setZoom(zoom);
+      this.clearMarkers();
+    }
+  }, {
     key: 'addMarkersWithTimeout',
-    value: function addMarkersWithTimeout(position, timeout) {
-      var _this3 = this;
-
-      setTimeout(function () {
-        var mark = new google.maps.Marker({
-          position: position,
-          map: _this3.map,
-          animation: google.maps.Animation.DROP
-        });
-      }, timeout);
+    value: function addMarkersWithTimeout(markers, timeout) {
+      setTimeout(this.createMarkers(markers), timeout);
     }
   }, {
     key: 'drop',
     value: function drop() {
-      for (var i = 0; i < markers.length; i++) {
-        this.addMarkersWithTimeout(markers[i], i * 200);
+      this.addMarkersWithTimeout(markers, 200);
+    }
+  }, {
+    key: 'clearMarkers',
+    value: function clearMarkers() {
+      for (var i = 0; i < this.markers.length; i++) {
+        this.markers[i].setMap(null);
+      }
+    }
+  }, {
+    key: 'clearPolygon',
+    value: function clearPolygon() {
+      for (var i = 0; i < this.polygon.length; i++) {
+        this.polygon[i].setMap(null);
       }
     }
   }, {
@@ -3751,52 +3797,6 @@ var Map = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = Map;
-
-// import React from 'react';
-// import { compose , withProps } from 'recompose';
-// import { withScriptjs, withGoogleMap, GoogleMap, Marker, Polyline } from 'react-google-maps';
-//
-// const lineCoordinates= [
-//   {lat:-38.831876, lng:-69.118508},
-//   {lat:-38.850271, lng:-69.334857},
-//   {lat:-38.934777, lng:-69.123027},
-//   {lat:-38.926690, lng:-69.291851},
-//   {lat:-38.850271, lng:-69.334857}
-//  ]
-// const InitMap = compose(
-//
-//   withProps({
-//     center: {lat:-39.064064 , lng:-69.5903451},
-//     zoom : 9,
-//     googleMapURL : "https://maps.googleapis.com/maps/api/js?key=AIzaSyCp3MyOjVXkmtK9oZmBAwhL5nyhq6U88wc&libraries=geometry,drawing,places",
-//     loadingElement : <div style={{ height: `100%` }} />,
-//     containerElement: <div style={{ height: `100%` }} />,
-//     mapElement : <div style={{ height: `100%` }} />,
-//     strokeColor : "#FF0000"
-//   }),
-//   withScriptjs,
-//   withGoogleMap
-// )((props) =>
-//
-//       <GoogleMap
-//         ref = {props.mapLoaded}
-//         onDragEnd = {props.onDragEnd}
-//         onZoomChanged = {props.onZoomChanged}
-//         defaultZoom = {props.zoom}
-//         defaultCenter = {props.center}
-//         defaultMapTypeId = 'satellite' >
-//
-//         {props.isMarkerShown && <Marker
-//           position = {{ lat:-38.859467 , lng:-69.207356 }} />
-//         }
-//
-//         <Polyline
-//           path = {lineCoordinates}
-//         />
-//       </GoogleMap>
-//   )
-//
-// export default InitMap;
 
 /***/ }),
 /* 49 */
@@ -3816,7 +3816,7 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(21);
+var _reactDom = __webpack_require__(29);
 
 var _reactRouter = __webpack_require__(36);
 
@@ -21092,7 +21092,7 @@ module.exports = camelize;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_prop_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__createTransitionManager__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__InternalPropTypes__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__RouterContext__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__RouterContext__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__RouteUtils__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__RouterUtils__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__routerWarning__ = __webpack_require__(11);
@@ -22824,7 +22824,7 @@ function computeChangedRoutes(prevState, nextState) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = getTransitionUtils;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__AsyncUtils__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__AsyncUtils__ = __webpack_require__(21);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 
@@ -23140,7 +23140,7 @@ function isActive(_ref, indexOnly, currentLocation, routes, params) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__AsyncUtils__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__AsyncUtils__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__PromiseUtils__ = __webpack_require__(38);
 
 
@@ -23183,7 +23183,7 @@ function getComponents(nextState, callback) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/* harmony export (immutable) */ __webpack_exports__["a"] = matchRoutes;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__AsyncUtils__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__AsyncUtils__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__PromiseUtils__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__PatternUtils__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__routerWarning__ = __webpack_require__(11);
@@ -23501,8 +23501,8 @@ var IndexLink = __WEBPACK_IMPORTED_MODULE_1_create_react_class___default()({
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_create_react_class___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_create_react_class__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_hoist_non_react_statics__ = __webpack_require__(73);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_hoist_non_react_statics___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_hoist_non_react_statics__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ContextUtils__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__PropTypes__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ContextUtils__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__PropTypes__ = __webpack_require__(24);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 
@@ -24105,7 +24105,7 @@ var _LocationUtils = __webpack_require__(13);
 
 var _PathUtils = __webpack_require__(8);
 
-var _createHistory = __webpack_require__(27);
+var _createHistory = __webpack_require__(26);
 
 var _createHistory2 = _interopRequireDefault(_createHistory);
 
@@ -24298,7 +24298,7 @@ var loopAsync = exports.loopAsync = function loopAsync(turns, work, callback) {
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__RouterContext__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__RouterContext__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__routerWarning__ = __webpack_require__(11);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -24370,9 +24370,9 @@ var _invariant = __webpack_require__(1);
 
 var _invariant2 = _interopRequireDefault(_invariant);
 
-var _ExecutionEnvironment = __webpack_require__(28);
+var _ExecutionEnvironment = __webpack_require__(27);
 
-var _BrowserProtocol = __webpack_require__(29);
+var _BrowserProtocol = __webpack_require__(28);
 
 var BrowserProtocol = _interopRequireWildcard(_BrowserProtocol);
 
@@ -24382,7 +24382,7 @@ var RefreshProtocol = _interopRequireWildcard(_RefreshProtocol);
 
 var _DOMUtils = __webpack_require__(18);
 
-var _createHistory = __webpack_require__(27);
+var _createHistory = __webpack_require__(26);
 
 var _createHistory2 = _interopRequireDefault(_createHistory);
 
@@ -24465,7 +24465,7 @@ exports.default = createBrowserHistory;
 exports.__esModule = true;
 exports.replaceLocation = exports.pushLocation = exports.getCurrentLocation = exports.go = exports.getUserConfirmation = undefined;
 
-var _BrowserProtocol = __webpack_require__(29);
+var _BrowserProtocol = __webpack_require__(28);
 
 Object.defineProperty(exports, 'getUserConfirmation', {
   enumerable: true,
@@ -24529,7 +24529,7 @@ var _invariant = __webpack_require__(1);
 
 var _invariant2 = _interopRequireDefault(_invariant);
 
-var _ExecutionEnvironment = __webpack_require__(28);
+var _ExecutionEnvironment = __webpack_require__(27);
 
 var _DOMUtils = __webpack_require__(18);
 
@@ -24537,7 +24537,7 @@ var _HashProtocol = __webpack_require__(88);
 
 var HashProtocol = _interopRequireWildcard(_HashProtocol);
 
-var _createHistory = __webpack_require__(27);
+var _createHistory = __webpack_require__(26);
 
 var _createHistory2 = _interopRequireDefault(_createHistory);
 
@@ -24674,7 +24674,7 @@ exports.default = createHashHistory;
 exports.__esModule = true;
 exports.replaceLocation = exports.pushLocation = exports.startListener = exports.getCurrentLocation = exports.go = exports.getUserConfirmation = undefined;
 
-var _BrowserProtocol = __webpack_require__(29);
+var _BrowserProtocol = __webpack_require__(28);
 
 Object.defineProperty(exports, 'getUserConfirmation', {
   enumerable: true,
@@ -24824,7 +24824,7 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(21);
+var _reactDom = __webpack_require__(29);
 
 var _reactRouter = __webpack_require__(36);
 

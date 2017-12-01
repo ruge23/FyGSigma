@@ -1,6 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 
+//////////////////////////////////////////////////////////////////////////////////////////////
 const lineCoordinates = [
   {lat:-38.850271, lng:-69.334857},
   {lat:-38.831876, lng:-69.118508},
@@ -23,57 +24,93 @@ const config = {
   },
   zoom : 12,
 }
-
+////////////////////////////////////////////////////////////////////////////////////////////////////
 class Map extends React.Component{
   constructor(props){
     super(props)
-    this.state = {}
+    this.state = {
+      markers: [],
+    }
   }
 
   componentDidMount(){
 
     window.initMap = () => {
+
       this.map = new google.maps.Map(document.getElementById('map'),{
-        center: {lat:-39.064064 , lng:-69.5903451},
-        zoom: 9,
-        mapTypeId: 'satellite'
-      });
-      //console.log(this)
-      this.polygon = new google.maps.Polygon({
-        strokeColor: '#155fd6',
-        strokeOpacity: 0.5,
-        strokeWeight: 3,
-        fillColor: '#155fd6',
-        fillOpacity: 0.2
+        center: {lat :-38.879376, lng:-69.214060},
+        zoom: 10,
+        mapTypeId: 'satellite',
+        disableDefaultUI:true,
       });
 
-      this.polygon.setPath(lineCoordinates);
-      this.polygon.setMap(this.map);
-      this.polygon.addListener('click', () => this.reDrawMap(config.center, config.zoom, lineCoordinates));
+      this.markers = [];
+
+      this.polygon = [];
+
+      this.createPolygon(lineCoordinates);
+    }
+  }
+
+  createPolygon(path){
+    this.polygon.push(new google.maps.Polygon({
+      strokeColor: '#043789',
+      strokeOpacity: 0.8,
+      strokeWeight: 3,
+      fillColor: '#043789',
+      fillOpacity: 0.5
+    }))
+    for(var i = 0; i<this.polygon.length; i++){
+      this.polygon[i].setPath(path);
+      this.polygon[i].setMap(this.map);
+      this.polygon[i].addListener('click', () => this.reDrawMap(config.center, config.zoom, lineCoordinates));
+    }
+  }
+
+  createMarkers(markers){
+    for(var i = 0; i<markers.length; i++){
+      this.markers.push(new google.maps.Marker({
+        position: markers[i],
+        map: this.map,
+        animation: google.maps.Animation.DROP
+      }));                                                                                  //cooregir position(ultimo siempre)
+      this.markers[this.markers.length-1].addListener('click',() => this.reDrawMarkers(this.markers[this.markers.length-1 ].position, 18))
     }
   }
 
   reDrawMap(center, zoom, path){
-    this.polygon.setPath(path);
+    //console.log(this);
     const pt = new google.maps.LatLng(center.lat, center.lng);
     this.map.setCenter(pt);
     this.map.setZoom(zoom);
     this.drop();
   }
 
-  addMarkersWithTimeout(position, timeout) {
-    setTimeout(() => {
-      var mark = new google.maps.Marker({
-        position: position,
-        map: this.map,
-        animation: google.maps.Animation.DROP
-      });
-    }, timeout);
+  reDrawMarkers(center, zoom){
+    //console.log(this.markers)
+    this.clearPolygon();
+    this.map.setCenter(center);
+    this.map.setZoom(zoom);
+    this.clearMarkers();
+  }
+
+  addMarkersWithTimeout(markers, timeout) {
+    setTimeout(this.createMarkers(markers), timeout)
   }
 
   drop(){
-    for(var i =0; i< markers.length; i++){
-      this.addMarkersWithTimeout(markers[i], i * 200);
+      this.addMarkersWithTimeout(markers, 200);
+  }
+
+  clearMarkers(){
+    for(var i = 0; i < this.markers.length; i++){
+      this.markers[i].setMap(null);
+    }
+  }
+
+  clearPolygon(){
+    for(var i = 0; i < this.polygon.length; i++){
+      this.polygon[i].setMap(null);
     }
   }
 
@@ -85,49 +122,3 @@ class Map extends React.Component{
 }
 
 export default Map;
-
-// import React from 'react';
-// import { compose , withProps } from 'recompose';
-// import { withScriptjs, withGoogleMap, GoogleMap, Marker, Polyline } from 'react-google-maps';
-//
-// const lineCoordinates= [
-//   {lat:-38.831876, lng:-69.118508},
-//   {lat:-38.850271, lng:-69.334857},
-//   {lat:-38.934777, lng:-69.123027},
-//   {lat:-38.926690, lng:-69.291851},
-//   {lat:-38.850271, lng:-69.334857}
-//  ]
-// const InitMap = compose(
-//
-//   withProps({
-//     center: {lat:-39.064064 , lng:-69.5903451},
-//     zoom : 9,
-//     googleMapURL : "https://maps.googleapis.com/maps/api/js?key=AIzaSyCp3MyOjVXkmtK9oZmBAwhL5nyhq6U88wc&libraries=geometry,drawing,places",
-//     loadingElement : <div style={{ height: `100%` }} />,
-//     containerElement: <div style={{ height: `100%` }} />,
-//     mapElement : <div style={{ height: `100%` }} />,
-//     strokeColor : "#FF0000"
-//   }),
-//   withScriptjs,
-//   withGoogleMap
-// )((props) =>
-//
-//       <GoogleMap
-//         ref = {props.mapLoaded}
-//         onDragEnd = {props.onDragEnd}
-//         onZoomChanged = {props.onZoomChanged}
-//         defaultZoom = {props.zoom}
-//         defaultCenter = {props.center}
-//         defaultMapTypeId = 'satellite' >
-//
-//         {props.isMarkerShown && <Marker
-//           position = {{ lat:-38.859467 , lng:-69.207356 }} />
-//         }
-//
-//         <Polyline
-//           path = {lineCoordinates}
-//         />
-//       </GoogleMap>
-//   )
-//
-// export default InitMap;

@@ -18,10 +18,20 @@
       margin: 0;
       padding: 0;
     }
+    .control-back{
+      z-index: 0;
+      position: absolute;
+      right: 0;
+      top: 15px;
+      margin-right: 40px;
+    }
   </style>
 </head>
 <body>
   <div id="map"></div>
+  <div class="control-back">
+    <button>Back</button>
+  </div>
   <script async defer
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCp3MyOjVXkmtK9oZmBAwhL5nyhq6U88wc&callback=initMap">//Se carga la Maps Javascript API usando la etiqueta
   // async permite que el navegador represente el resto del sitio web
