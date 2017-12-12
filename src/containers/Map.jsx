@@ -13,13 +13,12 @@ class Map extends React.Component{
   }
 
   componentDidMount(){
-    console.log(this.props.info)
-    window.initMap = () => {
-
+    console.log('hola?',this.props.info)
       this.map = new google.maps.Map(document.getElementById('map'),{
         center: {lat :-38.879376, lng:-69.214060},
         zoom: 10,
         mapTypeId: 'satellite',
+        streetViewControl: false,
         disableDefaultUI:true,
       });
 
@@ -28,7 +27,6 @@ class Map extends React.Component{
       this.polygon = [];
 
       this.mostrarRegiones();
-    }
   }
 
   removeMap(){
@@ -68,14 +66,12 @@ class Map extends React.Component{
         this.mostrarLocaciones(poligono.region)
         this.map.setCenter(poligono.region.mapData.center);
         this.map.setZoom(poligono.region.mapData.zoom);
-        //this.update(poligono.region);
       });
       google.maps.event.addListener(markerReg, 'click', () => {
         //this.removeMap();
         this.mostrarLocaciones(poligono.region);
         this.map.setCenter(poligono.region.mapData.center);
         this.map.setZoom(poligono.mapData.zoom);
-        //this.update(poligono.region);
       })
     }
   }
@@ -148,7 +144,7 @@ class Map extends React.Component{
 
   render(){
     return(
-      <div id = 'map'></div>
+      <div id='map'></div>
     )
   }
 }

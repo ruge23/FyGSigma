@@ -29,6 +29,7 @@
   "dependencies": {
     "axios": "^0.17.1",
     "express": "^4.16.2",
+    "materialize-css": "^0.100.2",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
     "react-redux": "^5.0.6",
