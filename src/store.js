@@ -1,7 +1,7 @@
 import { createStore, compose, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 
-import mapReducer from './redux/reducers/modificarMap';
+import rootReducer from './redux/reducers';
 //importo los datos que vamos a usar por defecto
 import locaciones from './data/locaciones';
 import regiones from './data/regiones'
@@ -15,13 +15,7 @@ const defaultState = {
       regiones,
       tanques,
     },
-    mapState: {
-      regiones: [],
-      locaciones: [],
-      tanques: [],
-      zoom: 10,
-      center: {}
-    }
+    mapHistory: []
   }
 }
 // plugin de development
@@ -32,6 +26,6 @@ const enhancers = compose(
 
 
 // creo el store
-const store = createStore(mapReducer, defaultState, enhancers);
+const store = createStore(rootReducer, defaultState, enhancers);
 
 export default store;

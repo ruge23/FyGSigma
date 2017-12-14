@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-// modificar Map
-export function moficarMap(mapData){
+//agregar al historial
+export function addToHistory(historial){
   return {
     type:'MODIFICAR_MAP',
-    mapData,
+    historial,
   }
 }
 //volver para atras
@@ -13,6 +13,7 @@ export function volver(){
     type:'VOLVER',
   }
 }
+
 //cargar info del mapa en el stado
 export function cargarInfo(info) {
   return {

@@ -28,7 +28,7 @@ export default class Login extends React.Component{
     render(){
         return(
             <div id="login" className ="row" style={{backgroundColor:"#222222",marginBottom: "0", height:"100%", display:"flex", justifyContent:"center", alignItems:"center"}}>
-                <form onSubmit={this.handleSubmitLogin} className="login-form" style={{width:"25%", color:"black", overflow:"hidden"}}>
+                <form onSubmit={this.handleSubmitLogin} className="login-form" style={{width:"25%", color:"black", overflow:"hidden", minWidth:"300px"}}>
                     <div className = "col s12 z-depth-4 card-panel login-card">
                         <div className="row">
                             <div className="input-field col s12 center">

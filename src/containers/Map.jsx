@@ -14,7 +14,9 @@ class Map extends React.Component{
 
   componentDidMount(){
     console.log('hola?',this.props.info)
-      this.map = new google.maps.Map(document.getElementById('map'),{
+    console.log('mapHistorial', this.props.historial)
+      
+    this.map = new google.maps.Map(document.getElementById('map'),{
         center: {lat :-38.879376, lng:-69.214060},
         zoom: 10,
         mapTypeId: 'satellite',
@@ -49,6 +51,7 @@ class Map extends React.Component{
         fillOpacity: 0.35,
         region: this.props.info.regiones[i]
       });
+      //el marker de cada region
       const markerReg = new google.maps.Marker({
         position: new google.maps.LatLng(this.props.info.regiones[i].mapData.center.lat, this.props.info.regiones[i].mapData.center.lng),
         map: this.map,
@@ -61,12 +64,13 @@ class Map extends React.Component{
       this.markers.push(markerReg);
       poligono.setMap(this.map);
       this.polygon.push(poligono);
-      google.maps.event.addListener(poligono, 'click', () => {
+      ((indice) => google.maps.event.addListener(poligono, 'click', () => {
         //this.removeMap();
+        this.props.addToHistory({ vista: 'R', region: indice, locacion: null });
         this.mostrarLocaciones(poligono.region)
         this.map.setCenter(poligono.region.mapData.center);
         this.map.setZoom(poligono.region.mapData.zoom);
-      });
+      }))(i);
       google.maps.event.addListener(markerReg, 'click', () => {
         //this.removeMap();
         this.mostrarLocaciones(poligono.region);
@@ -106,10 +110,12 @@ class Map extends React.Component{
           locacion: this.props.info.locaciones[i]
         });
         this.markers.push(markerLocaciones);                                                                                  //cooregir position(ultimo siempre)
-        google.maps.event.addListener(markerLocaciones, 'click', () =>{
+        ((indice) => google.maps.event.addListener(markerLocaciones, 'click', () =>{
           this.removeMap();
+          var indiceReg = this.props.info.regiones.findIndex(reg => reg.id === region.id)
+          this.props.addToHistory({ vista: 'L', region: indiceReg, locaciones: indice })
           this.mostrarTanques(markerLocaciones.locacion);
-        });
+        }))(i);
       }
     }
   }
@@ -136,15 +142,34 @@ class Map extends React.Component{
           map: this.map,
           animation: google.maps.Animation.DROP,
           icon: icon,
-          idEquipo: this.props.info. tanques[i].id,
+          idEquipo: this.props.info.tanques[i].id,
         });
       }
     }
   }
 
+  goBack(){
+    //console.log(this.props.historial);
+    const hist = this.props.historial[this.props.historial.length-2];
+    if(this.props.historial.length <= 1) {
+      this.mostrarRegiones();
+      this.map.setZoom(10); 
+    } else if (hist.vista === 'R'){
+      console.log('REGION',this.props.info.regiones[hist.region])
+      this.mostrarLocaciones(this.props.info.regiones[hist.region])
+    } else if(hist.vista === 'L'){
+      this.mostrarRegiones()
+    }
+    this.props.volver()
+  }
+
   render(){
     return(
-      <div id='map'></div>
+      <div className="map">
+        <div id='map'>
+        </div>
+        <button className='control-back' onClick={this.goBack.bind(this)}>GoBack</button>
+      </div>
     )
   }
 }
@@ -152,6 +177,7 @@ class Map extends React.Component{
 const mapStateToProps = state => {
   return{
     info: state.dataMap.mapInfo,
+    historial: state.dataMap.mapHistory,
   }
 }
 
