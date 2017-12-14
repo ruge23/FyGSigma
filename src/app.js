@@ -12,7 +12,7 @@ const router = (
     <Router history={hashHistory}>
       <Route path ='/'>
         <Route path='/login' component= { Login }></Route> 
-        <Route path='/home' component = { Map }></Route>
+        <Route path='/home' component = { Main }></Route>
         <IndexRedirect to='/login' />
       </Route>
     </Router>

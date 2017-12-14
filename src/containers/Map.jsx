@@ -144,6 +144,7 @@ class Map extends React.Component{
           icon: icon,
           idEquipo: this.props.info.tanques[i].id,
         });
+        this.markers.push(marker);
       }
     }
   }
