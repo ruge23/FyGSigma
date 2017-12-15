@@ -1,14 +1,13 @@
-#searchComponent{
+.searchComponent{
     background-color: white;
     position: absolute;
     margin-top: 10px;
     z-index: 10;
-    background-color: white;
     margin-left: 10px;
     transition: all 0.1s linear;
 }
 
-#searchContainer{
+.searchContainer{
     white-space: nowrap;
     padding-top: 4px;
     padding-bottom: 4px;
@@ -20,13 +19,12 @@
   
 }
 
-#hamburguerContainer{
-    background-color: white;
+.hamburguerContainer{
     display: inline-block;
     vertical-align: middle;
     height: 24px;
     padding-left: 8px;
-    padding-right: 4px;
+    padding-right: 8px;
   
 }
 
@@ -34,14 +32,13 @@
     color: dimgray;
   }
 
-#searchboxContainer{
-    border-right: 0.5px solid #eee;
+.searchboxContainer{
     display: inline-block;
     max-width: 284.48px;
     width: 284.48px;
   }
 
-#searchBox{
+.searchBox{
     width: 240px;
     color: black;
     margin-bottom: 0;
@@ -57,7 +54,7 @@
   
   }
 
-  #clearButton{
+  .clearButton{
     display: inline-block;
     vertical-align: middle;
     height: 24px;
@@ -73,7 +70,7 @@
     border-left: 1px solid #e6e6e6;
   }
   
-  #logoContainer{
+  .logoContainer{
     display: inline-block;
     width: 50px;
     margin-left: 7px;
@@ -81,10 +78,9 @@
   }
 
   .maxHeight{
-    max-height: 255px;
     overflow-y: scroll;
     -ms-overflow-style: none;
-  
+    max-height: 306px;
   }
 
 
@@ -136,7 +132,7 @@
   }
   
   
-#searchBox:focus{
+.searchBox:focus{
     border-bottom: none;
     -webkit-box-shadow: none;
     box-shadow: none;
@@ -145,6 +141,5 @@
   .centered{
     padding-top: 14px;
     padding-bottom: 15px;
-    position: absolute;
   }
 

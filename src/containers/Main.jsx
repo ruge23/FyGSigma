@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 
-
 class Main extends React.Component{
   constructor(props){
     super(props)
@@ -27,7 +26,6 @@ class Main extends React.Component{
   }
 
   filter = () => {
-    console.log('filter')
     var result = []
     var arrays = Object.keys(this.props.info).map(propName => this.props.info[propName])
     for(var i=0; i < arrays.length; i++) {
@@ -41,6 +39,19 @@ class Main extends React.Component{
       autocomplete: result,
     })
   }
+
+  dropdownItem = (lugar, s) => {
+    if(lugar.tipo === 'R'){
+      return <span style={{display: "inline-block"}}>{lugar.nombre}<i className="fa fa-globe" aria-hidden="true"></i></span>
+    }
+    if(lugar.tipo === 'L'){
+      return <span className={s.iconWidth} style={{display: "inline-block"}}>{lugar.nombre}<i className="fa fa-map-marker" aria-hidden="true"></i></span>
+    }
+    if(lugar.tipo === 'T'){
+      return <span className={s.iconWidth} style={{display: "inline-block"}}>{lugar.nombre}<i className="material-icons tiny">brightness_auto</i></span>
+    }
+  }
+
   render(){
     return(
       <div id='container'>
@@ -48,6 +59,8 @@ class Main extends React.Component{
       <Search
         onChange={this.onChange}
         value={this.state.value}
+        autocomplete={this.state.autocomplete}
+        mostrar={this.dropdownItem}
       />        
       
       <Map />

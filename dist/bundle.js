@@ -48577,7 +48577,6 @@ var Main = function (_React$Component) {
     };
 
     _this.filter = function () {
-      console.log('filter');
       var result = [];
       var arrays = Object.keys(_this.props.info).map(function (propName) {
         return _this.props.info[propName];
@@ -48590,6 +48589,37 @@ var Main = function (_React$Component) {
       _this.setState({
         autocomplete: result
       });
+    };
+
+    _this.dropdownItem = function (lugar, s) {
+      if (lugar.tipo === 'R') {
+        return _react2.default.createElement(
+          'span',
+          { style: { display: "inline-block" } },
+          lugar.nombre,
+          _react2.default.createElement('i', { className: 'fa fa-globe', 'aria-hidden': 'true' })
+        );
+      }
+      if (lugar.tipo === 'L') {
+        return _react2.default.createElement(
+          'span',
+          { className: s.iconWidth, style: { display: "inline-block" } },
+          lugar.nombre,
+          _react2.default.createElement('i', { className: 'fa fa-map-marker', 'aria-hidden': 'true' })
+        );
+      }
+      if (lugar.tipo === 'T') {
+        return _react2.default.createElement(
+          'span',
+          { className: s.iconWidth, style: { display: "inline-block" } },
+          lugar.nombre,
+          _react2.default.createElement(
+            'i',
+            { className: 'material-icons tiny' },
+            'brightness_auto'
+          )
+        );
+      }
     };
 
     console.log('info', _this.props.info);
@@ -48608,7 +48638,9 @@ var Main = function (_React$Component) {
         { id: 'container' },
         _react2.default.createElement(_Search2.default, {
           onChange: this.onChange,
-          value: this.state.value
+          value: this.state.value,
+          autocomplete: this.state.autocomplete,
+          mostrar: this.dropdownItem
         }),
         _react2.default.createElement(_Map2.default, null)
       );
@@ -49576,7 +49608,7 @@ module.exports = function spread(callback) {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+	value: true
 });
 
 var _react = __webpack_require__(1);
@@ -49594,46 +49626,61 @@ var _Search2 = _interopRequireDefault(_Search);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Search = function Search(props) {
-  return _react2.default.createElement(
-    'div',
-    { id: _Search2.default.searchComponent },
-    _react2.default.createElement(
-      'div',
-      { id: _Search2.default.searchContainer },
-      _react2.default.createElement(
-        'div',
-        { id: _Search2.default.hamburguerContainer },
-        _react2.default.createElement(
-          'a',
-          { className: _Search2.default.menuButton },
-          _react2.default.createElement(
-            'i',
-            { className: 'material-icons' },
-            'menu'
-          )
-        )
-      ),
-      _react2.default.createElement(
-        'div',
-        { id: _Search2.default.searchboxContainer },
-        _react2.default.createElement('input', { id: _Search2.default.searchBox, type: 'text', placeholder: 'Buscar..', value: props.value, onChange: props.onChange }),
-        _react2.default.createElement(
-          'div',
-          { id: _Search2.default.clearButton /*(click)="searchBox.value= ''; search(searchBox.value)"*/ },
-          _react2.default.createElement(
-            'i',
-            { className: 'material-icons', style: { color: "rgba(0,0,0,0.3)" } },
-            'clear'
-          )
-        )
-      ),
-      _react2.default.createElement(
-        'div',
-        { id: _Search2.default.logoContainer },
-        _react2.default.createElement('img', { className: _Search2.default.horiz, src: '../assets/img/ypfLogo.png' })
-      )
-    )
-  );
+	return _react2.default.createElement(
+		'div',
+		{ className: _Search2.default.searchComponent },
+		_react2.default.createElement(
+			'div',
+			{ className: _Search2.default.searchContainer },
+			_react2.default.createElement(
+				'div',
+				{ className: _Search2.default.hamburguerContainer },
+				_react2.default.createElement(
+					'a',
+					{ className: _Search2.default.menuButton },
+					_react2.default.createElement(
+						'i',
+						{ className: 'material-icons' },
+						'menu'
+					)
+				)
+			),
+			_react2.default.createElement(
+				'div',
+				{ className: _Search2.default.searchboxContainer },
+				_react2.default.createElement('input', { className: _Search2.default.searchBox, type: 'text', placeholder: 'Buscar..', value: props.value, onChange: props.onChange }),
+				_react2.default.createElement(
+					'div',
+					{ className: _Search2.default.clearButton },
+					_react2.default.createElement(
+						'i',
+						{ className: 'material-icons', style: { color: "rgba(0,0,0,0.3)" } },
+						'clear'
+					)
+				)
+			),
+			_react2.default.createElement(
+				'div',
+				{ className: _Search2.default.logoContainer },
+				_react2.default.createElement('img', { className: _Search2.default.horiz, src: '../assets/img/ypfLogo.png' })
+			)
+		),
+		_react2.default.createElement(
+			'div',
+			{ className: _Search2.default.maxHeight },
+			props.autocomplete.length === 0 ? null : props.autocomplete.map(function (lugar) {
+				return _react2.default.createElement(
+					'div',
+					{ className: _Search2.default.searchResult },
+					_react2.default.createElement(
+						'div',
+						{ className: _Search2.default.centered },
+						props.mostrar(lugar, _Search2.default)
+					)
+				);
+			})
+		)
+	);
 };
 
 exports.default = Search;
@@ -52337,7 +52384,7 @@ exports = module.exports = __webpack_require__(72)(undefined);
 
 
 // module
-exports.push([module.i, "#Search__searchComponent___1fHPu{\n    background-color: white;\n    position: absolute;\n    margin-top: 10px;\n    z-index: 10;\n    background-color: white;\n    margin-left: 10px;\n    transition: all 0.1s linear;\n}\n\n#Search__searchContainer___ONJCo{\n    white-space: nowrap;\n    padding-top: 4px;\n    padding-bottom: 4px;\n    max-width: 392px;\n    width: 392px;\n    height: 51px;\n    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);\n    vertical-align: middle;\n  \n}\n\n#Search__hamburguerContainer___2jH8j{\n    background-color: white;\n    display: inline-block;\n    vertical-align: middle;\n    height: 24px;\n    padding-left: 8px;\n    padding-right: 4px;\n  \n}\n\n.Search__menuButton___3njg5{\n    color: dimgray;\n  }\n\n#Search__searchboxContainer___2qDEa{\n    border-right: 0.5px solid #eee;\n    display: inline-block;\n    max-width: 284.48px;\n    width: 284.48px;\n  }\n\n#Search__searchBox___3qB7I{\n    width: 240px;\n    color: black;\n    margin-bottom: 0;\n    border: 1px solid transparent;\n    border-radius: 2px 0 0 2px;\n    box-sizing: border-box;\n    -moz-box-sizing: border-box;\n    height: 43px;\n    outline: none;\n    padding: 10px;\n    padding-left: 7px;\n    border-left: 1px solid #e6e6e6;\n  \n  }\n\n  #Search__clearButton___3TCjT{\n    display: inline-block;\n    vertical-align: middle;\n    height: 24px;\n    padding-left: 8px;\n    padding-right: 4px;\n  }\n\n  .Search__hrVertical___2HHSD{\n    display: inline-block;\n    vertical-align: middle;\n    margin-left: 40px;\n    height: 43px;\n    border-left: 1px solid #e6e6e6;\n  }\n  \n  #Search__logoContainer___35Pgs{\n    display: inline-block;\n    width: 50px;\n    margin-left: 7px;\n  \n  }\n\n  .Search__maxHeight___kK_3v{\n    max-height: 255px;\n    overflow-y: scroll;\n    -ms-overflow-style: none;\n  \n  }\n\n\n  .Search__searchResult___2HKWi{\n    color: black;\n    border-top: 1px solid #e6e6e6;\n    padding: 0 10px;\n    cursor: pointer;\n    height: 51px;\n  \n  }\n\n  .Search__horiz___3AQAx{\n    width: 100%;\n    height: auto;\n    vertical-align: middle;\n  }\n \n  ::-webkit-scrollbar {\n    width: 10px;\n  }\n  ::-webkit-scrollbar-track {\n    background:rgba(0,0,0,0.05);\n  }\n  \n  ::-webkit-scrollbar-thumb {\n    border-radius: 8px;\n    height: 5px;\n    background: rgba(0,0,0,0.0);\n  }\n  ::-webkit-scrollbar-thumb:hover {\n    background: rgba(0,0,0,0.5);\n  }\n  div:hover>::-webkit-scrollbar-thumb{\n    background: rgba(0,0,0,0.3);\n  }\n  \n  .Search__iconWidth___3SzKT{\n    padding-right: 20px;\n  }\n  \n  .Search__searchResult___2HKWi:hover {\n    color: black;\n    background-color: #4e544e;\n  }\n \n  input::-ms-clear{\n    display:none;\n  }\n  \n  \n#Search__searchBox___3qB7I:focus{\n    border-bottom: none;\n    -webkit-box-shadow: none;\n    box-shadow: none;\n  }\n  \n  .Search__centered___N456_{\n    padding-top: 14px;\n    padding-bottom: 15px;\n    position: absolute;\n  }\n\n", ""]);
+exports.push([module.i, ".Search__searchComponent___1fHPu{\n    background-color: white;\n    position: absolute;\n    margin-top: 10px;\n    z-index: 10;\n    margin-left: 10px;\n    transition: all 0.1s linear;\n}\n\n.Search__searchContainer___ONJCo{\n    white-space: nowrap;\n    padding-top: 4px;\n    padding-bottom: 4px;\n    max-width: 392px;\n    width: 392px;\n    height: 51px;\n    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);\n    vertical-align: middle;\n  \n}\n\n.Search__hamburguerContainer___2jH8j{\n    display: inline-block;\n    vertical-align: middle;\n    height: 24px;\n    padding-left: 8px;\n    padding-right: 8px;\n  \n}\n\n.Search__menuButton___3njg5{\n    color: dimgray;\n  }\n\n.Search__searchboxContainer___2qDEa{\n    display: inline-block;\n    max-width: 284.48px;\n    width: 284.48px;\n  }\n\n.Search__searchBox___3qB7I{\n    width: 240px;\n    color: black;\n    margin-bottom: 0;\n    border: 1px solid transparent;\n    border-radius: 2px 0 0 2px;\n    box-sizing: border-box;\n    -moz-box-sizing: border-box;\n    height: 43px;\n    outline: none;\n    padding: 10px;\n    padding-left: 7px;\n    border-left: 1px solid #e6e6e6;\n  \n  }\n\n  .Search__clearButton___3TCjT{\n    display: inline-block;\n    vertical-align: middle;\n    height: 24px;\n    padding-left: 8px;\n    padding-right: 4px;\n  }\n\n  .Search__hrVertical___2HHSD{\n    display: inline-block;\n    vertical-align: middle;\n    margin-left: 40px;\n    height: 43px;\n    border-left: 1px solid #e6e6e6;\n  }\n  \n  .Search__logoContainer___35Pgs{\n    display: inline-block;\n    width: 50px;\n    margin-left: 7px;\n  \n  }\n\n  .Search__maxHeight___kK_3v{\n    overflow-y: scroll;\n    -ms-overflow-style: none;\n    max-height: 306px;\n  }\n\n\n  .Search__searchResult___2HKWi{\n    color: black;\n    border-top: 1px solid #e6e6e6;\n    padding: 0 10px;\n    cursor: pointer;\n    height: 51px;\n  \n  }\n\n  .Search__horiz___3AQAx{\n    width: 100%;\n    height: auto;\n    vertical-align: middle;\n  }\n \n  ::-webkit-scrollbar {\n    width: 10px;\n  }\n  ::-webkit-scrollbar-track {\n    background:rgba(0,0,0,0.05);\n  }\n  \n  ::-webkit-scrollbar-thumb {\n    border-radius: 8px;\n    height: 5px;\n    background: rgba(0,0,0,0.0);\n  }\n  ::-webkit-scrollbar-thumb:hover {\n    background: rgba(0,0,0,0.5);\n  }\n  div:hover>::-webkit-scrollbar-thumb{\n    background: rgba(0,0,0,0.3);\n  }\n  \n  .Search__iconWidth___3SzKT{\n    padding-right: 20px;\n  }\n  \n  .Search__searchResult___2HKWi:hover {\n    color: black;\n    background-color: #4e544e;\n  }\n \n  input::-ms-clear{\n    display:none;\n  }\n  \n  \n.Search__searchBox___3qB7I:focus{\n    border-bottom: none;\n    -webkit-box-shadow: none;\n    box-shadow: none;\n  }\n  \n  .Search__centered___N456_{\n    padding-top: 14px;\n    padding-bottom: 15px;\n  }\n\n", ""]);
 
 // exports
 exports.locals = {
