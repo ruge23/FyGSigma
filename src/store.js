@@ -12,7 +12,6 @@ const defaultState = {
   dataMap: {
     mapInfo: {
       locaciones,
-      regiones,
       tanques,
     },
     mapHistory: []
