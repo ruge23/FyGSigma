@@ -2,7 +2,6 @@ import React from 'react';
 import { render } from 'react-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import store from '../store';
 import * as actionCreator from '../redux/actions/actionCreator';
 
 
@@ -13,10 +12,7 @@ class Map extends React.Component{
   }
 
   componentDidMount(){
-    console.log('hola?',this.props.info)
-    console.log('mapHistorial', this.props.historial)
-      
-    this.map = new google.maps.Map(document.getElementById('map'),{
+      this.map = new google.maps.Map(document.getElementById('map'),{
         center: {lat :-38.879376, lng:-69.214060},
         zoom: 10,
         mapTypeId: 'satellite',
@@ -105,7 +101,7 @@ class Map extends React.Component{
           label:{
             color: 'black',
             fontWeigth: 'bold',
-            text: this.props.info.locaciones[i].nombre
+            text: this.pSearchrops.info.locaciones[i].nombre
           },
           locacion: this.props.info.locaciones[i]
         });

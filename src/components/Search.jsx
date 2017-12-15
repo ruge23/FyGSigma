@@ -1,19 +1,25 @@
 import React from 'react';
+import materialize from 'materialize-css';
+import s from './Search.ncss';
 
-const Search = function(){
+const Search = function(props){
     return(
-        <div className='search-control' style={{position:'absolute', zIndex:'10', marginTop:'1%', width:'70px'}}>
-            <div className='search-component'style={{backgroundColor:'white', marginLeft:'10px', transition:'all 0.1s linear'}} >
-                <div className='search-container' style={{backgroundColor:'white', whiteSpace:'nowrap',height:'40px', display: 'flex'}}>
-                    <div className='input container' style={{backgroundColor:'white', display:'inline-block', paddingLeft:'8px', paddingRight:'4px'}}>
-                        <a className='menu-button'><i className='material-icons'>menu</i></a>
-                    </div>
-                    <div className='searchbox-container' style={{backgroundColor:'white', display:'inline-block', maxWidth:'284.48px', width:'284.48px'}}>
-                        <input className='search-box' type='text' placeholder='Buscar...' style={{backgroundColor:'white', color:'black', marginBottom:'0', border:'1px solid transparent', borderRadius:'1px 0 0 1px', height:'38px', outline:'none', paddingLeft:'7px', borderLeft:'1px solid #e6e6e6'}} /> 
-                    </div> 
-                </div>
-            </div>
+        <div id={s.searchComponent}>
+        <div id={s.searchContainer}>
+          <div id={s.hamburguerContainer}>
+            <a className={s.menuButton}><i className="material-icons">menu</i></a>
+          </div>
+          <div id={s.searchboxContainer}>
+            <input id={s.searchBox} type="text" placeholder="Buscar.." value={props.value} onChange={props.onChange}/>
+                <div id={s.clearButton} /*(click)="searchBox.value= ''; search(searchBox.value)"*/><i className="material-icons" style={{color:"rgba(0,0,0,0.3)"}} >clear</i></div>
+            
+          </div>
+          <div id={s.logoContainer}>
+            <img className={s.horiz} src="../assets/img/ypfLogo.png" />
+          </div>
         </div>
+        
+      </div>
     )
 }
 

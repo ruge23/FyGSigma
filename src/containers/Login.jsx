@@ -1,5 +1,6 @@
 import React from 'react';
 import materialize from 'materialize-css';
+import s from './Login.ncss';
 
 export default class Login extends React.Component{
     constructor(props){
@@ -27,8 +28,8 @@ export default class Login extends React.Component{
 
     render(){
         return(
-            <div id="login" className ="row" style={{backgroundColor:"#222222",marginBottom: "0", height:"100%", display:"flex", justifyContent:"center", alignItems:"center"}}>
-                <form onSubmit={this.handleSubmitLogin} className="login-form" style={{width:"25%", color:"black", overflow:"hidden", minWidth:"300px"}}>
+            <div id="login" className ="row" id={s.rowClass}>
+                <form onSubmit={this.handleSubmitLogin} className="login-form" id={s.loginFormClass}>
                     <div className = "col s12 z-depth-4 card-panel login-card">
                         <div className="row">
                             <div className="input-field col s12 center">

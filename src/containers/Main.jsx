@@ -2,21 +2,68 @@ import React from 'react';
 import { render } from 'react-dom';
 import Map from './Map.jsx';
 import Search from '../components/Search.jsx';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-export default class Main extends React.Component{
-  constructor(){
-    super()
+
+
+class Main extends React.Component{
+  constructor(props){
+    super(props)
+    console.log('info',this.props.info)
     this.state = {
-      // map: null,
+      value: '',
+      autocomplete : []
     }
   }
+  
+  onChange = (e) => {
+    clearTimeout(this.timeout)
+    this.setState({
+      value : e.target.value,
+    },() => { 
+      this.timeout = setTimeout(this.filter,500)
+    });
+  }
 
+  filter = () => {
+    console.log('filter')
+    var result = []
+    var arrays = Object.keys(this.props.info).map(propName => this.props.info[propName])
+    for(var i=0; i < arrays.length; i++) {
+      result = [
+        ...result,
+        ...arrays[i]
+        .filter(obj => obj.nombre.toLowerCase().includes(this.state.value))
+      ]
+    }
+    this.setState({
+      autocomplete: result,
+    })
+  }
   render(){
     return(
       <div id='container'>
-        <Search />
-        <Map />
+
+      <Search
+        onChange={this.onChange}
+        value={this.state.value}
+      />        
+      
+      <Map />
+      
       </div>
     )
   }
 }
+
+const mapStateToProps = state => {
+  return{
+    info: state.dataMap.mapInfo,
+  }
+}
+
+export default connect (mapStateToProps, null)(Main);
+
+
+
