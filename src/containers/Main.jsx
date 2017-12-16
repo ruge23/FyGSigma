@@ -1,5 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
+import materialize from 'materialize-css';
 import Map from './Map.jsx';
 import Search from '../components/Search.jsx';
 import { connect } from 'react-redux';
