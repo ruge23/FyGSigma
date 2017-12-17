@@ -1,5 +1,17 @@
 import axios from 'axios';
 
+const ROOT_URL = '54.234.124.9:3000/api';
+
+//Buscar areas del api
+export function fetchAreas() {
+    const req =  axios.get(`http://54.234.124.9:3000/api/areas`);
+
+    return {
+        type: 'FETCH_AREAS',
+        payload: req
+    }
+}
+
 //agregar al historial
 export function addToHistory(historial){
   return {
@@ -7,6 +19,7 @@ export function addToHistory(historial){
     historial,
   }
 }
+
 //volver para atras
 export function volver(){
   return {
