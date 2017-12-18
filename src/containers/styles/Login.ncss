@@ -1,4 +1,4 @@
-#rowClass{
+.row{
     background-color : #222222;
     margin-bottom: 0 ;
     height:100%;
@@ -11,4 +11,8 @@
     color:black; 
     overflow:hidden; 
     min-Width:300px
+}
+
+.align-icon{
+    margin-top: 10px;
 }

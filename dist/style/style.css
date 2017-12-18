@@ -1,0 +1,18 @@
+#app, #container{
+    height: 100vh;
+}
+#map, .map, #container{
+    height: 100%;
+}
+html, body{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+
+}
+a{
+    color: rgba(0, 0, 0, 0.3);
+}
+.align-icon{
+    margin-top: 10px;
+}

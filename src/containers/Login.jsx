@@ -1,6 +1,7 @@
 import React from 'react';
 import materialize from 'materialize-css';
-import s from './Login.ncss';
+import s from './styles/Login.ncss';
+import './styles/Login.ncss';
 
 export default class Login extends React.Component{
     constructor(props){
@@ -28,7 +29,7 @@ export default class Login extends React.Component{
 
     render(){
         return(
-            <div id="login" className ="row" id={s.rowClass}>
+            <div id="login" className ={s.row}>
                 <form onSubmit={this.handleSubmitLogin} className="login-form" id={s.loginFormClass}>
                     <div className = "col s12 z-depth-4 card-panel login-card">
                         <div className="row">
@@ -40,7 +41,7 @@ export default class Login extends React.Component{
                         
                             <div className="row">
                                 <div className="input-field col s12 center">
-                                    <i className="material-icons prefix">account_circle</i>
+                                    <i className="material-icons prefix align-icon">account_circle</i>
                                     <input id="username" type="text" className="validate" onChange={this.handleChange} /> 
                                     <label className="center-align" style={{textAlign: "left"}}>Username</label>
                                 </div>
@@ -48,7 +49,7 @@ export default class Login extends React.Component{
 
                         <div className="row">
                             <div className="input-field col s12 center">    
-                                <i className="material-icons prefix">lock</i>
+                                <i className="material-icons prefix align-icon">lock</i>
                                 <input id="password" type="password" className="validate" onChange={this.handleChange} />
                                 <label style={{textAlign: "left"}}>Password</label>
                             </div>

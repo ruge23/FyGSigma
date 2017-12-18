@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchAreas } from "../redux/actions/actionCreator";
+import { getMapInfo } from "../redux/actions/actionCreator";
 import s from './styles/Map.ncss';
 import RaisedButton from 'material-ui/RaisedButton';
 import * as actionCreator from '../redux/actions/actionCreator';
@@ -16,7 +16,7 @@ class Map extends React.Component{
 
   componentDidMount(){
 
-      this.props.fetchAreas();
+      this.props.getMapInfo();
       console.log('hola?', this.props.info);
       console.log('mapHistorial', this.props.historial);
 
