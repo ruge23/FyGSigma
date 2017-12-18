@@ -1,0 +1,99 @@
+
+
+
+#map_canvas {
+    margin: auto;
+    height: 100%;
+    z-index: 3;
+    border: 1px solid #ccc;
+}
+.mapContainer{
+    height: 100%;
+    z-index: 10;
+    overflow-y: hidden;
+}
+#legend {
+    background: #fff;
+    padding: 10px;
+    margin: 10px;
+    border: 3px solid #000;
+}
+#legend h3 {
+    margin-top: 0;
+}
+#legend img {
+    vertical-align: middle;
+}
+
+.nav-btns{
+    margin-top: 18px;
+    padding-right: 10px;
+    width: 100%;
+}
+
+.btn{
+    z-index: 0;
+    position: absolute;
+    right: 0;
+    top: 20px;
+    margin-right: 10px;
+    padding: 0 0 0 0;
+    background-color: white;
+    color: black;
+    height: 36px;
+    line-height: 36px;
+    min-width: 61px !important;
+    width: 61px;
+    float: right;
+}
+
+.btn i{
+    color: rgba(0,0,0,0.6);
+    vertical-align: middle;
+    line-height: 25px;
+    margin-bottom: 3px;
+}
+#logOut{
+    border-radius: 3%;
+    background-color: #222;
+}
+
+.dropdown-content{
+    margin-left: 30px;
+    background-color: transparent;
+    color: white;
+}
+.user-initial{
+    margin: 18px;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+.user-container{
+    box-shadow: 1px 1px 3px black;
+    line-height: 100%;
+    vertical-align: middle;
+    align-content: center;
+    text-align: center;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    transition: all .3s ease-in-out;
+}
+.triangle-up{
+    background-color: transparent;
+    margin: 0;
+    margin-left: 40px;
+    text-align: center;
+    min-height: 0!important;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+
+    border-bottom: 10px solid #222;
+}
+
+.triangle-up:hover{
+    background-color: transparent;
+}

@@ -16,12 +16,12 @@ const defaultState = {
     },
     mapHistory: []
   }
-}
+};
 // plugin de development
 const enhancers = compose(
   applyMiddleware(thunk),
   window.devToolsExtension ? window.devToolsExtension() : (f) => f
-)
+);
 
 
 // creo el store

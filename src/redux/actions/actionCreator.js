@@ -23,7 +23,7 @@ export function addToHistory(historial){
 //volver para atras
 export function volver(){
   return {
-    type:'VOLVER',
+    type:'VOLVER_MAP',
   }
 }
 

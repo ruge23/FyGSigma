@@ -11,8 +11,7 @@ const Search = function(props){
 						</div>
 						<div id={s.searchboxContainer}>
 							<input id={s.searchBox} type="text" placeholder="Buscar.." value={props.value} onChange={props.onChange}/>
-									<div id={s.clearButton}><i className="material-icons" style={{color:"rgba(0,0,0,0.3)"}} >clear</i></div>
-							
+							<div id={s.clearButton}><i className="material-icons" style={{color:"rgba(0,0,0,0.3)"}} >clear</i></div>
 						</div>
 						<div id={s.logoContainer}>
 							<img className={s.horiz} src="../assets/img/ypfLogo.png" />

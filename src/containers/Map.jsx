@@ -3,11 +3,13 @@ import { render } from 'react-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchAreas } from "../redux/actions/actionCreator";
+import s from './styles/Map.ncss';
+import RaisedButton from 'material-ui/RaisedButton';
 import * as actionCreator from '../redux/actions/actionCreator';
-
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 class Map extends React.Component{
+
   constructor(props){
     super(props)
   }
@@ -30,7 +32,7 @@ class Map extends React.Component{
 
       this.polygon = [];
 
-      setTimeout(() => this.mostrarRegiones(), 10000);
+      setTimeout(()=>this.mostrarRegiones(), 5000);
   }
 
   createPolygon(mapData, object){
@@ -170,7 +172,7 @@ class Map extends React.Component{
           <div className="map">
             <div id='map'>
             </div>
-            <button className='control-back' onClick={this.goBack.bind(this)}>GoBack</button>
+              <RaisedButton className={s.btn} onClick={this.goBack.bind(this)}><i className="material-icons">keyboard_arrow_left</i></RaisedButton>
           </div>
         )
   }
