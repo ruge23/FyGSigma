@@ -2,10 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-<<<<<<< HEAD
-=======
 import { fetchAreas } from "../redux/actions/actionCreator";
->>>>>>> 20e33e1d25cbe2fedbed6bb6234533b7461352aa
 import * as actionCreator from '../redux/actions/actionCreator';
 
 
@@ -16,31 +13,26 @@ class Map extends React.Component{
   }
 
   componentDidMount(){
-<<<<<<< HEAD
-      this.map = new google.maps.Map(document.getElementById('map'),{
-=======
-    this.props.fetchAreas();
-    console.log('hola?',this.props.info);
-    console.log('mapHistorial', this.props.historial);
-      
-    this.map = new google.maps.Map(document.getElementById('map'),{
->>>>>>> 20e33e1d25cbe2fedbed6bb6234533b7461352aa
-        center: {lat :-38.879376, lng:-69.214060},
-        zoom: 10,
-        mapTypeId: 'satellite',
-        streetViewControl: false,
-        disableDefaultUI:true,
+
+      this.props.fetchAreas();
+      console.log('hola?', this.props.info);
+      console.log('mapHistorial', this.props.historial);
+
+      this.map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -38.879376, lng: -69.214060},
+          zoom: 10,
+          mapTypeId: 'satellite',
+          streetViewControl: false,
+          disableDefaultUI: true,
       });
 
       this.markers = [];
 
       this.polygon = [];
 
-      setTimeout(()=>this.mostrarRegiones(), 10000)
+      setTimeout(() => this.mostrarRegiones(), 10000);
   }
 
-
-  //Metodo para crear polygonos
   createPolygon(mapData, object){
       return new google.maps.Polygon({
           path: mapData.bounds,
@@ -77,6 +69,7 @@ class Map extends React.Component{
     this.polygon =[];
     this.markers = [];
   }
+
   mostrarRegiones(){
     this.removeFromMap();
     for(let i = 0; i < this.props.info.regiones.length; i++){
@@ -119,21 +112,7 @@ class Map extends React.Component{
     this.polygon.push(poligono);
     for(let i = 0; i<this.props.info.locaciones.length; i++){
       if(this.props.info.locaciones[i].idRegion === region.id){
-<<<<<<< HEAD
-        const markerLocaciones = new google.maps.Marker({
-          position: new google.maps.LatLng(this.props.info.locaciones[i].mapData.center.lat, this.props.info.locaciones[i].mapData.center.lng),
-          map: this.map,
-          animation: google.maps.Animation.DROP,
-          label:{
-            color: 'black',
-            fontWeigth: 'bold',
-            text: this.pSearchrops.info.locaciones[i].nombre
-          },
-          locacion: this.props.info.locaciones[i]
-        });
-=======
         const markerLocaciones = this.createMarker(this.props.info.locaciones[i].mapData, this.props.info.locaciones[i].nombre, this.props.info.locaciones[i]);
->>>>>>> 20e33e1d25cbe2fedbed6bb6234533b7461352aa
         this.markers.push(markerLocaciones);                                                                                  //cooregir position(ultimo siempre)
         ((indice) => google.maps.event.addListener(markerLocaciones, 'click', () =>{
           this.removeFromMap();
@@ -187,13 +166,13 @@ class Map extends React.Component{
   }
 
   render(){
-    return(
-      <div className="map">
-        <div id='map'>
-        </div>
-        <button className='control-back' onClick={this.goBack.bind(this)}>GoBack</button>
-      </div>
-    )
+        return(
+          <div className="map">
+            <div id='map'>
+            </div>
+            <button className='control-back' onClick={this.goBack.bind(this)}>GoBack</button>
+          </div>
+        )
   }
 }
 
@@ -209,3 +188,4 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Map);
+

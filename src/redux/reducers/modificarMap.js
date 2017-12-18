@@ -2,13 +2,11 @@ function mapReducer(state={}, action) {
   switch(action.type){
 
     case 'FETCH_AREAS':
-      let regiones;
-      return action.payload.then(res => {
-          regiones = res.data;
-          console.log(regiones);
-          return Object.assign({}, state, { mapInfo: { regiones: regiones }});
-      });
-
+      return (dispatch) => (
+          axios.get(`http://54.234.124.9:3000/api/areas`)
+              .then(payload => {
+                  dispatch(cargarInfo(payload.data));
+              }));
 
     case 'MODIFICAR_MAP':
     console.log('STATE:', state);

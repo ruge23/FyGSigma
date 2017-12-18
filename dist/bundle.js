@@ -86684,32 +86684,29 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Search = function Search() {
     return _react2.default.createElement(
         'div',
-        { className: 'search-control', style: { position: 'absolute', zIndex: '10', marginTop: '1%', width: '70px' } },
+        { className: 'search-component' },
         _react2.default.createElement(
             'div',
-            { className: 'search-component', style: { backgroundColor: 'white', marginLeft: '10px', transition: 'all 0.1s linear' } },
+            { className: 'search-container' },
             _react2.default.createElement(
                 'div',
-                { className: 'search-container', style: { backgroundColor: 'white', whiteSpace: 'nowrap', height: '40px', display: 'flex' } },
+                { className: 'hamburguer-container' },
                 _react2.default.createElement(
-                    'div',
-                    { className: 'input container', style: { backgroundColor: 'white', display: 'inline-block', paddingLeft: '8px', paddingRight: '4px' } },
+                    'a',
+                    { className: 'menu-button' },
                     _react2.default.createElement(
-                        'a',
-                        { className: 'menu-button' },
-                        _react2.default.createElement(
-                            'i',
-                            { className: 'material-icons' },
-                            'menu'
-                        )
+                        'i',
+                        { className: 'material-icons' },
+                        'menu'
                     )
-                ),
-                _react2.default.createElement(
-                    'div',
-                    { className: 'searchbox-container', style: { backgroundColor: 'white', display: 'inline-block', maxWidth: '284.48px', width: '284.48px' } },
-                    _react2.default.createElement('input', { className: 'search-box', type: 'text', placeholder: 'Buscar...', style: { backgroundColor: 'white', color: 'black', marginBottom: '0', border: '1px solid transparent', borderRadius: '1px 0 0 1px', height: '38px', outline: 'none', paddingLeft: '7px', borderLeft: '1px solid #e6e6e6' } })
                 )
-            )
+            ),
+            _react2.default.createElement(
+                'div',
+                { className: 'searchbox-container' },
+                _react2.default.createElement('input', { className: 'search-box hr-vertical', type: 'text', placeholder: 'Buscar..' })
+            ),
+            _react2.default.createElement('div', { className: 'logo-container' })
         )
     );
 };
@@ -101697,12 +101694,11 @@ function mapReducer() {
     switch (action.type) {
 
         case 'FETCH_AREAS':
-            var regiones = void 0;
-            return action.payload.then(function (res) {
-                regiones = res.data;
-                console.log(regiones);
-                return Object.assign({}, state, { mapInfo: { regiones: regiones } });
-            });
+            return function (dispatch) {
+                return axios.get('http://54.234.124.9:3000/api/areas').then(function (payload) {
+                    dispatch(cargarInfo(payload.data));
+                });
+            };
 
         case 'MODIFICAR_MAP':
             console.log('STATE:', state);
