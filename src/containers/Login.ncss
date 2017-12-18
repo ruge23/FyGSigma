@@ -1,0 +1,14 @@
+#rowClass{
+    background-color : #222222;
+    margin-bottom: 0 ;
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+#loginFormClass{
+    width:25%; 
+    color:black; 
+    overflow:hidden; 
+    min-Width:300px
+}
