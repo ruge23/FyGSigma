@@ -1,6 +1,6 @@
 import React from 'react';
 import materialize from 'materialize-css';
-import s from './Search.ncss';
+import s from './styles/Search.ncss';
 
 const Search = function(props){
     return(

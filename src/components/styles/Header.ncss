@@ -1,0 +1,91 @@
+
+#header{
+    background-color: #222 !important;
+}
+
+nav{
+    position: fixed;
+    z-index: 1060;
+    height: 65px;
+}
+#siteInfo{
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    margin-right: 400px;
+}
+
+#navlink{
+    height: 65px;
+}
+
+.dropdownContent{
+    background-color: #222;
+    color: white;
+    box-shadow: none;
+}
+.dropdownContent li :hover{
+    background-color: #4e544e;
+}
+
+.buttonCollapse{
+    z-index: 997;
+    display: inline-block;
+}
+
+#nav-link{
+    z-index: 10000;
+}
+h4{
+    z-index: 1;
+}
+.logoHeader{
+    height: 100%;
+    width: auto;
+
+}
+.filler{
+    position: absolute;
+    width: 87%;
+    margin-left: 6%;
+}
+.logoContainer{
+    height: 60px;
+    vertical-align: middle;
+    margin: 3px 0 0 10px;
+    cursor: pointer;
+    cursor: hand;
+}
+.logoContainer:focus{
+    border: none;
+}
+#userOptionsDropdown{
+    text-align: center;
+    background-color: #222;
+    min-width: 140px;
+    min-height: 40px;
+    max-height: 40px;
+}
+
+#userOptionsDropdown:hover{
+    background-color: #4e544e;
+}
+#userOptionsDropdown i{
+    position: relative;
+    top: 5px;
+    margin-left: 3px;
+}
+.userWrapper{
+    width: 200px;
+}
+#salir{
+    display: inline-block;
+    padding-left: 4%;
+    font-size: 1.5rem;
+
+}
+.dropdown{
+    background-color: #222;
+    min-width: 140px;
+    min-height: 40px;
+}

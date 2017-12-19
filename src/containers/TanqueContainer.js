@@ -1,13 +1,18 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { connect } from 'react-redux';
+import Header from '../components/Header';
+import * as actionCreator from '../redux/actions/actionCreator';
 import { bindActionCreators } from 'redux';
 
 
 class TanqueContainer extends React.Component{
+    constructor(props){
+        super(props)
+    }
 
-    componentDidMount(){
-
+    render(){
+        return <Header user="Hola"/>
     }
 
 
@@ -24,4 +29,4 @@ const mapDispatchToProps = dispatch => {
     return bindActionCreators(actionCreator, dispatch);
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Map);
+export default connect(mapStateToProps, mapDispatchToProps)(TanqueContainer);
