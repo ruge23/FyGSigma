@@ -2,17 +2,6 @@ import axios from 'axios';
 
 const ROOT_URL = 'http://54.234.124.9:3000/api';
 
-
-export function getTanque(id) {
-    const req = axios.get(`http://54.234.124.9:3000/api/tanque/${id}`);
-
-    return (dispatch) => {
-        axios.get(req)
-            .then(respuesta => dispatch(cargarTanque(respuesta.data)));
-
-    };
-}
-
 //agregar al historial
     export function addToHistory(historial) {
         return {
@@ -50,4 +39,23 @@ export function getTanque(id) {
                 .then(respuesta => dispatch(cargarInfo(respuesta.data)))
         }
     }
+
+export function getTanque(id) {
+    const req = axios.get(`http://54.234.124.9:3000/api/tanque/${id}`);
+
+    return (dispatch) => {
+        axios.get(req)
+            .then(respuesta => dispatch(cargarTanque(respuesta.data)));
+
+    };
+}
+
+export function select(target) {
+
+        return {
+            type: 'SELECT',
+            payload: target
+            };
+
+}
 

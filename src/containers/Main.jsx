@@ -9,8 +9,8 @@ import { bindActionCreators } from 'redux';
 
 class Main extends React.Component{
   constructor(props){
-    super(props)
-    console.log('info',this.props.info)
+    super(props);
+    console.log('info',this.props.info);
     this.state = {
       value: '',
       autocomplete : []
@@ -42,6 +42,9 @@ class Main extends React.Component{
   }
 
   dropdownItem = (lugar, s) => {
+    if(this.state.value === ''){
+      return '';
+    }
     if(lugar.tipo === 'R'){
       return <span style={{display: "inline-block"}}>{lugar.nombre}<i className="fa fa-globe" aria-hidden="true"></i></span>
     }

@@ -21,6 +21,7 @@ nav{
 
 .dropdownContent{
     background-color: #222;
+    border-radius: 0 !important;
     color: white;
     box-shadow: none;
 }
@@ -85,6 +86,7 @@ h4{
 
 }
 .dropdown{
+    border-radius: 0 !important;
     background-color: #222;
     min-width: 140px;
     min-height: 40px;

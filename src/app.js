@@ -7,7 +7,7 @@ import Login from './containers/Login.jsx';
 import Map from './containers/Map.jsx';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import store from './store';
-import TanqueContainer from "./containers/TanqueContainer";
+import TanqueContainer from "./containers/TanqueComponents/TanqueContainer";
 
 const router = (
   <MuiThemeProvider>
@@ -16,7 +16,7 @@ const router = (
         <Route path ='/'>
           <Route path='/login' component= { Login }/>
           <Route path='/home' component = { Main }/>
-          <Route path='/tanque/:id' component = { TanqueContainer }/>
+          <Route path='/tanque/:idTanque' component = { TanqueContainer }/>
           <IndexRedirect to='/login' />
         </Route>
       </Router>

@@ -1,0 +1,96 @@
+.table{
+    border-collapse: collapse;
+    border: 1px solid #fff;
+}
+.table td{
+    border: 1px solid #fff;
+}
+
+.table tr td:nth-child(1) {
+    text-align: center;
+    font-weight: bold;
+    font-size: 19px;
+}
+
+.table tr td.normal {
+    font-size: 16px;
+    font-weight: normal;
+    text-align: left;
+}.green{
+     color: black;
+     background-color: green;
+ }
+
+.red{
+    color: black;
+    background-color: red;
+}
+.cardi {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    margin: 25px 0;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+    border-radius: 3px;
+    color: rgba(0,0,0, 0.87);
+    background: #fff;
+}
+
+.card .cardContent {
+    padding: 15px 20px;
+
+}
+
+.cardHeader {
+    box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.42), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+    margin: -20px 15px 0;
+    border-radius: 3px;
+    padding: 15px;
+    background-color: #222;
+    color: #FFFFFF;
+    font-size: 1.5rem;
+    font-weight: 300;
+}
+.title{
+    margin: 0;
+}
+.cardContent{
+    width: 100%;
+    margin-top: 2%;
+    min-height: 200px;
+}
+.table td{
+    border: 1px solid rgba(0,0,0,0.3);
+}
+.headers th{
+    border-left: 1px solid rgba(0,0,0,0.3);
+    border-right: 1px solid rgba(0,0,0,0.3);
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+    text-align: center;
+    background-color: #656565;
+    color: white;
+}
+
+.separator{
+    border: 2px solid rgba(0,0,0,0.3);
+    font-weight: bold;
+    text-align: center;
+    background-color: #656565;
+    color: white;
+}
+.row{
+    margin-top: 3%;
+}
+.tipoCell{
+    vertical-align: middle;
+    text-align: center;
+}
+.noMargin{
+    margin: 0;
+}
+.noShadow{
+    box-shadow: none;
+}
+:host /deep/ .datatable-body-row.active .datatable-row-group {
+    background-color: #b5b5b5 !important;
+}

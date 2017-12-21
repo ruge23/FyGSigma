@@ -11,6 +11,9 @@ module.exports ={
       exclude: /node_modules/,
       query: { presets: ['env', 'stage-0', 'react'] },
     },{
+        test: /\.css$/,
+        use: [ 'style-loader', 'css-loader' ]
+    },{
       test: /\.ncss$/,
       loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]' 
     },]

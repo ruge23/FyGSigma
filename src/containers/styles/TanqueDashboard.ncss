@@ -1,0 +1,99 @@
+.green{
+    color: black;
+    background-color: green;
+}
+
+.red{
+    color: black;
+    background-color: red;
+}
+
+.tkImg{
+    height: 200px;
+    width: auto;
+}
+
+.cardContent{
+    width: inherit;
+    vertical-align: middle;
+    line-height: 100%;
+    display: inline-block;
+    padding: 0 0 0 0;
+}
+
+.datosCard{
+    width: 100%;
+}
+.stateCard{
+    height: 170px;
+    width: 100%;
+}
+.stateIcon{
+    font-size: 110px;
+    vertical-align: middle;
+    margin-top: 6px;
+}
+.stateTitle{
+    font-size: 20px;
+    text-align: left;
+    padding-top: 10px;
+    padding-right: 0;
+    vertical-align: text-bottom;
+    padding-left: 5px;
+}
+
+.dueDate{
+    margin-top: 10px;
+    padding-left: 45px
+}
+
+.datosLi{
+    padding-top: 45px;
+    font-weight: 500;
+    font-size: 25px;
+    width: 100%;
+}
+.datosSpan{
+    min-width: 190px;
+    max-width: 190px;
+    font-weight: 300;
+    line-height: 25px;
+}
+.noShadow{
+    box-shadow: none;
+}
+.leftAlign{
+    padding-left: 45px;
+}
+.cardTitle{
+    padding: 5px 5px;
+    border-bottom: 1px rgba(0,0,0,0.3) solid;
+}
+
+
+/* Scrollbar */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background:rgba(0,0,0,0.05);
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    height: 5px;
+    background: rgba(0,0,0,0.0);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0,0,0,0.5);
+}
+
+@media only screen and (max-width: 1300px) {
+    .datosLi{
+        font-size: 1.5rem;
+    }
+    .datosCard{
+        margin-left: 3%;
+    }
+}

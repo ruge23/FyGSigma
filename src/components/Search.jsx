@@ -17,18 +17,18 @@ const Search = function(props){
 							<img className={s.horiz} src="../assets/img/ypfLogo.png" />
 						</div>
 					</div>
-					<div className={s.maxHeight}>
-						{ props.autocomplete.length === 0 ? null: 
-							props.autocomplete.map(lugar => (
+					{ props.autocomplete.length === 0 ? null:(
+						<div className={s.maxHeight}>
+							{props.autocomplete.map(lugar => (
 								<div className={s.searchResult}>
 									<div className={s.centered}> 
 										{props.mostrar(lugar, s)}
 									</div>
 								</div>
 								)
-							)
-						}
-					</div>
+							)}
+						</div>)
+					}
 				</div>
     )
 }

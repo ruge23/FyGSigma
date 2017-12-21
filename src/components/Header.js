@@ -25,7 +25,6 @@ export default class Header extends React.Component {
     }
 
     handleClick = (event) => {
-        // This prevents ghost click.
         event.preventDefault();
         this.setState({
             open: true,
