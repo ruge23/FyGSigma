@@ -5,6 +5,7 @@ import Map from './Map.jsx';
 import Search from '../../components/Search.jsx';
 import SideNav from './SideNav';
 import { connect } from 'react-redux';
+import s from '../styles/SideNav.ncss';
 import { bindActionCreators } from 'redux';
 
 
@@ -34,9 +35,7 @@ class Main extends React.Component{
   clearInput = () => {
     this.setState({
         value: ''
-    }, () => {
-        this.filter()
-    });
+    })
   };
 
   onChange = (e) => {
@@ -91,19 +90,21 @@ class Main extends React.Component{
   render(){
     return(
       <div id='container'>
+          <div className={s.collapseButtonContainer}>
+              <div id={s.collapseButton} className={s.collapseButton} onClick={()=> this.setState({isVisible: !this.state.isVisible})}>
+                  <i className="material-icons" id={s.buttonIcon} style={{color: 'rgba(0,0,0,0.6)', verticalAlign: 'middle', lineHeight: 51}}>keyboard_arrow_left</i>
+              </div>
+          </div>
+          <Search clear={this.clearInput}
+                  updateCurrent={this.updateCurrent}
+                  onChange={this.onChange}
+                  value={this.state.value}
+                  autocomplete={this.state.autocomplete}
+                  mostrar={this.dropdownItem}
+          />
+          <SideNav current={this.state.current} updateCurrent={this.updateCurrent} isVisible={this.state.current !== null}/>
 
-      <Search
-        clear={this.clearInput}
-        updateCurrent={this.updateCurrent}
-        onChange={this.onChange}
-        value={this.state.value}
-        autocomplete={this.state.autocomplete}
-        mostrar={this.dropdownItem}
-      />
-
-      <SideNav current={this.state.current} updateCurrent={this.updateCurrent} isVisible={this.state.current !== null}/>
-      
-      <Map updateCurrent={this.updateCurrent} current={this.state.current} />
+          <Map updateCurrent={this.updateCurrent} current={this.state.current} />
       
       </div>
     )

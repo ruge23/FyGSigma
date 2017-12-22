@@ -51324,6 +51324,10 @@ var _SideNav2 = _interopRequireDefault(_SideNav);
 
 var _reactRedux = __webpack_require__(22);
 
+var _SideNav3 = __webpack_require__(310);
+
+var _SideNav4 = _interopRequireDefault(_SideNav3);
+
 var _redux = __webpack_require__(11);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -51357,8 +51361,6 @@ var Main = function (_React$Component) {
     _this.clearInput = function () {
       _this.setState({
         value: ''
-      }, function () {
-        _this.filter();
       });
     };
 
@@ -51439,11 +51441,27 @@ var Main = function (_React$Component) {
   _createClass(Main, [{
     key: 'render',
     value: function render() {
+      var _this2 = this;
+
       return _react2.default.createElement(
         'div',
         { id: 'container' },
-        _react2.default.createElement(_Search2.default, {
-          clear: this.clearInput,
+        _react2.default.createElement(
+          'div',
+          { className: _SideNav4.default.collapseButtonContainer },
+          _react2.default.createElement(
+            'div',
+            { id: _SideNav4.default.collapseButton, className: _SideNav4.default.collapseButton, onClick: function onClick() {
+                return _this2.setState({ isVisible: !_this2.state.isVisible });
+              } },
+            _react2.default.createElement(
+              'i',
+              { className: 'material-icons', id: _SideNav4.default.buttonIcon, style: { color: 'rgba(0,0,0,0.6)', verticalAlign: 'middle', lineHeight: 51 } },
+              'keyboard_arrow_left'
+            )
+          )
+        ),
+        _react2.default.createElement(_Search2.default, { clear: this.clearInput,
           updateCurrent: this.updateCurrent,
           onChange: this.onChange,
           value: this.state.value,
@@ -58569,7 +58587,7 @@ exports.default = Paper;
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+    value: true
 });
 
 var _react = __webpack_require__(1);
@@ -58587,65 +58605,65 @@ var _Search2 = _interopRequireDefault(_Search);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Search = function Search(props) {
-	return _react2.default.createElement(
-		'div',
-		{ id: _Search2.default.searchComponent },
-		_react2.default.createElement(
-			'div',
-			{ id: _Search2.default.searchContainer },
-			_react2.default.createElement(
-				'div',
-				{ className: _Search2.default.hamburguerContainer },
-				_react2.default.createElement(
-					'a',
-					{ id: _Search2.default.menuButton },
-					_react2.default.createElement(
-						'i',
-						{ className: 'material-icons' },
-						'menu'
-					)
-				)
-			),
-			_react2.default.createElement(
-				'div',
-				{ id: _Search2.default.searchboxContainer },
-				_react2.default.createElement('input', { id: _Search2.default.searchBox, type: 'text', placeholder: 'Buscar..', value: props.value, onChange: props.onChange }),
-				props.value === '' ? null : _react2.default.createElement(
-					'div',
-					{ id: _Search2.default.clearButton, onClick: function onClick() {
-							return props.clear;
-						} },
-					_react2.default.createElement(
-						'i',
-						{ className: 'material-icons', style: { color: "rgba(0,0,0,0.3)" } },
-						'clear'
-					)
-				)
-			),
-			_react2.default.createElement(
-				'div',
-				{ id: _Search2.default.logoContainer },
-				_react2.default.createElement('img', { className: _Search2.default.horiz, src: '../assets/img/ypfLogo.png' })
-			)
-		),
-		props.value === '' ? null : _react2.default.createElement(
-			'div',
-			{ className: _Search2.default.maxHeight },
-			props.autocomplete.map(function (lugar, index) {
-				return _react2.default.createElement(
-					'div',
-					{ className: _Search2.default.searchResult, onClick: function onClick() {
-							return props.updateCurrent(lugar);
-						}, key: index },
-					_react2.default.createElement(
-						'div',
-						{ className: _Search2.default.centered },
-						props.mostrar(lugar, _Search2.default)
-					)
-				);
-			})
-		)
-	);
+    return _react2.default.createElement(
+        'div',
+        { id: _Search2.default.searchComponent },
+        _react2.default.createElement(
+            'div',
+            { id: _Search2.default.searchContainer },
+            _react2.default.createElement(
+                'div',
+                { className: _Search2.default.hamburguerContainer },
+                _react2.default.createElement(
+                    'a',
+                    { id: _Search2.default.menuButton },
+                    _react2.default.createElement(
+                        'i',
+                        { className: 'material-icons' },
+                        'menu'
+                    )
+                )
+            ),
+            _react2.default.createElement(
+                'div',
+                { id: _Search2.default.searchboxContainer },
+                _react2.default.createElement('input', { id: _Search2.default.searchBox, type: 'text', placeholder: 'Buscar..', value: props.value, onChange: props.onChange }),
+                props.value === '' ? null : _react2.default.createElement(
+                    'div',
+                    { id: _Search2.default.clearButton, onClick: function onClick() {
+                            return props.clear();
+                        } },
+                    _react2.default.createElement(
+                        'i',
+                        { className: 'material-icons', style: { color: "rgba(0,0,0,0.3)" } },
+                        'clear'
+                    )
+                )
+            ),
+            _react2.default.createElement(
+                'div',
+                { id: _Search2.default.logoContainer },
+                _react2.default.createElement('img', { className: _Search2.default.horiz, src: '../assets/img/ypfLogo.png' })
+            )
+        ),
+        props.value === '' ? null : _react2.default.createElement(
+            'div',
+            { className: _Search2.default.maxHeight },
+            props.autocomplete.map(function (lugar, index) {
+                return _react2.default.createElement(
+                    'div',
+                    { className: _Search2.default.searchResult, onClick: function onClick() {
+                            return props.updateCurrent(lugar);
+                        }, key: index },
+                    _react2.default.createElement(
+                        'div',
+                        { className: _Search2.default.centered },
+                        props.mostrar(lugar, _Search2.default)
+                    )
+                );
+            })
+        )
+    );
 };
 
 exports.default = Search;
@@ -58781,68 +58799,138 @@ var SideNav = function (_React$Component) {
             }
         }
     }, {
-        key: 'renderInstalacionDetailHelper',
-        value: function renderInstalacionDetailHelper(instalaciones) {
+        key: 'renderAreaDetail',
+        value: function renderAreaDetail(instalaciones) {
             var _this2 = this;
 
+            var details = void 0;
             if (instalaciones !== null) {
-                return instalaciones.forEach(function (instalacion) {
-                    return _this2.renderInstalacionDetail(instalacion);
-                });
-            }
-        }
-    }, {
-        key: 'renderInstalacionDetail',
-        value: function renderInstalacionDetail(instalacion) {
-            var _this3 = this;
-
-            return _react2.default.createElement(
-                'li',
-                { onClick: function onClick() {
-                        return _this3.props.updateCurrent(instalacion);
-                    } },
-                _react2.default.createElement(
-                    'div',
-                    { className: _SideNav2.default.locacionDisplay },
-                    _react2.default.createElement(
-                        'div',
-                        { className: _SideNav2.default.locacionContent },
+                details = instalaciones.map(function (instalacion, index) {
+                    return _react2.default.createElement(
+                        'li',
+                        { onClick: function onClick() {
+                                return _this2.props.updateCurrent(instalacion);
+                            }, key: index },
                         _react2.default.createElement(
                             'div',
-                            { className: _SideNav2.default.locacionHeader },
-                            _react2.default.createElement(
-                                'h3',
-                                { className: _SideNav2.default.locacionTittle },
-                                instalacion.nombre
-                            )
-                        ),
-                        _react2.default.createElement(
-                            'div',
-                            { className: _SideNav2.default.locacionDetail },
+                            { className: _SideNav2.default.locacionDisplay },
                             _react2.default.createElement(
                                 'div',
-                                null,
-                                'Cantidad de equipos: '
+                                { className: _SideNav2.default.locacionContent },
+                                _react2.default.createElement(
+                                    'div',
+                                    { className: _SideNav2.default.locacionHeader },
+                                    _react2.default.createElement(
+                                        'h3',
+                                        { className: _SideNav2.default.locacionTittle },
+                                        instalacion.nombre
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    'div',
+                                    { className: _SideNav2.default.locacionDetail },
+                                    _react2.default.createElement(
+                                        'div',
+                                        null,
+                                        'Cantidad de equipos: '
+                                    ),
+                                    _react2.default.createElement(
+                                        'div',
+                                        { style: { display: "inline-block" } },
+                                        'Cr\xEDticos:',
+                                        _react2.default.createElement(
+                                            'i',
+                                            { className: 'material-icons right', style: { verticalAlign: 'middle', fontSize: "1rem" } },
+                                            'brightness_1'
+                                        )
+                                    )
+                                )
                             ),
                             _react2.default.createElement(
                                 'div',
-                                { style: { display: "inline-block" } },
-                                'Cr\xEDticos:',
-                                _react2.default.createElement(
-                                    'i',
-                                    { className: 'material-icons right', style: { verticalAlign: 'middle', fontSize: "1rem" } },
-                                    'brightness_1'
-                                )
+                                { className: _SideNav2.default.searchImgContainer },
+                                _react2.default.createElement('img', { src: './assets/img/' + instalacion.nombre + '-' + instalacion.idRegion + '-' + instalacion.idTipoLocacion + '.jpeg', className: _SideNav2.default.searchImg })
                             )
                         )
-                    ),
-                    _react2.default.createElement(
-                        'div',
-                        { className: _SideNav2.default.searchImgContainer },
-                        _react2.default.createElement('img', { src: './../assets/img/' + instalacion.nombre + '-' + instalacion.idRegion + '-' + instalacion.idTipoLocacion + '.jpeg', className: _SideNav2.default.searchImg })
-                    )
-                )
-            );
+                    );
+                });
+            }
+            return details;
+        }
+    }, {
+        key: 'renderInstalacionDetail',
+        value: function renderInstalacionDetail(tanques) {
+            var _this3 = this;
+
+            var details = void 0;
+            if (tanques !== null) {
+                details = tanques.map(function (tanque, index) {
+                    return _react2.default.createElement(
+                        'li',
+                        { onClick: function onClick() {
+                                return _this3.props.updateCurrent(tanque);
+                            }, key: index },
+                        _react2.default.createElement(
+                            'div',
+                            { className: _SideNav2.default.locacionDisplay },
+                            _react2.default.createElement(
+                                'div',
+                                { className: _SideNav2.default.locacionContent },
+                                _react2.default.createElement(
+                                    'div',
+                                    { className: _SideNav2.default.locacionHeader },
+                                    _react2.default.createElement(
+                                        'h3',
+                                        { className: _SideNav2.default.locacionTittle },
+                                        tanque.nombre
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    'div',
+                                    { className: _SideNav2.default.locacionDetail },
+                                    _react2.default.createElement(
+                                        'div',
+                                        null,
+                                        'Auditoria 785/266: ',
+                                        _react2.default.createElement(
+                                            'span',
+                                            null,
+                                            ' '
+                                        )
+                                    ),
+                                    _react2.default.createElement(
+                                        'div',
+                                        null,
+                                        'Vida Remanente: '
+                                    ),
+                                    _react2.default.createElement(
+                                        'div',
+                                        null,
+                                        'Capacidad:   \u33A5'
+                                    ),
+                                    _react2.default.createElement(
+                                        'div',
+                                        null,
+                                        '\xDAltima intervenci\xF3n:  ',
+                                        _react2.default.createElement(
+                                            'span',
+                                            null,
+                                            '( A\xF1os)'
+                                        ),
+                                        ' '
+                                    )
+                                )
+                            ),
+                            _react2.default.createElement(
+                                'div',
+                                { className: _SideNav2.default.searchImgContainer },
+                                _react2.default.createElement('img', { src: './assets/img/' + tanque.nombre + '-' + tanque.idLocacion + '.jpeg', className: _SideNav2.default.searchImg })
+                            )
+                        )
+                    );
+                });
+            }
+            return details;
         }
     }, {
         key: 'render',
@@ -58852,14 +58940,14 @@ var SideNav = function (_React$Component) {
                 { position: 'left', dimMode: 'none', fluid: false, size: 408, zIndex: 8, isVisible: this.state.isVisible },
                 this.props.current === null ? null : _react2.default.createElement(
                     'div',
-                    null,
+                    { style: { color: 'black', overflowX: 'hidden' } },
                     _react2.default.createElement(
                         'div',
                         { id: _SideNav2.default.sideNav, style: { position: 'fixed' } },
                         _react2.default.createElement(
                             'div',
                             { className: _SideNav2.default.imgContainer },
-                            _react2.default.createElement('img', { src: '../../assets/img/test1.jpg', className: _SideNav2.default.imgDetail, alt: '' })
+                            _react2.default.createElement('img', { src: './assets/img/test1.jpg', className: _SideNav2.default.imgDetail, alt: '' })
                         ),
                         _react2.default.createElement(
                             'a',
@@ -58891,16 +58979,16 @@ var SideNav = function (_React$Component) {
                     ),
                     _react2.default.createElement(
                         'div',
-                        null,
+                        { style: { paddingTop: 340 } },
                         _react2.default.createElement(
                             'div',
                             { className: _SideNav2.default.estadisticasImg },
-                            _react2.default.createElement('img', { src: '../assets/img/' + this.props.current.nombre + '-estadisticas.jpeg' })
+                            _react2.default.createElement('img', { src: '../assets/img/' + this.props.current.nombre + '-estadisticas.jpeg', className: _SideNav2.default.estadisticasImg })
                         ),
                         _react2.default.createElement(
                             'ul',
-                            { style: { marginTop: 0 } },
-                            this.props.current.tipo === 'R' ? null : this.renderInstalacionDetailHelper(this.props.current.tanques)
+                            null,
+                            this.props.current.tipo === 'R' ? this.renderAreaDetail(this.props.current.instalaciones) : this.renderInstalacionDetail(this.props.current.tanques)
                         )
                     )
                 )
@@ -59886,25 +59974,25 @@ exports = module.exports = __webpack_require__(17)(undefined);
 
 
 // module
-exports.push([module.i, "#SideNav__sideNav___2n84O{\r\n    z-index: 8;\r\n    width: 408px;\r\n    overflow-x: hidden;\r\n    box-shadow: 15px 0 20px rgba(0,0,0,0.3);\r\n    transition: all 0.1s linear;\r\n    -ms-overflow-style: none;\r\n\r\n}\r\n\r\n.SideNav__locacion-display___1LUIp{\r\n    height: 112px;\r\n    padding: 10px 18px 10px 24px;\r\n    border-top: 1px solid #e6e6e6;\r\n}\r\n.SideNav__locacion-content___2t1v3{\r\n    color: #8c8c8c;\r\n    display: inline-block;\r\n    font-size: 13px;\r\n    line-height: 16px;\r\n    min-width: 1px;\r\n    vertical-align: top;\r\n    -webkit-flex: 1;\r\n    -ms-flex: 1;\r\n    flex: 1;\r\n    width: 250px;\r\n}\r\n.SideNav__locacion-detail___M-Crm{\r\n    padding-top: 2px;\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n    white-space: nowrap;\r\n}\r\n.SideNav__locacion-tittle___Rj3rO{\r\n    color: #000;\r\n    font-size: 15px;\r\n    line-height: 16px;\r\n    margin-top: 4px;\r\n    padding-bottom: 2px;\r\n    white-space: normal;\r\n    margin-bottom: 5px;\r\n}\r\n.SideNav__search-img-container___21hSm{\r\n    display: inline-block;\r\n    height: 92px;\r\n    width: 80px;\r\n    margin-left: 10px;\r\n    float: right;\r\n    position: relative;\r\n}\r\n.SideNav__search-img___1LU46{\r\n    background-size: 80px 92px;\r\n    height: 92px;\r\n    width: 80px;\r\n}\r\n\r\n.SideNav__imgContainer___3BybX{\r\n    height: 240px;\r\n    width: auto;\r\n    overflow: hidden;\r\n}\r\n.SideNav__imgDetail___3ewoe{\r\n    width: auto;\r\n    height: 240px;\r\n}\r\n\r\n#SideNav__name___2I3xy {\r\n    background-color: #176EB1;\r\n    height: 100px;\r\n    padding: 15px 20px 15px 20px;\r\n}\r\n\r\nh1{\r\n    font-size: 20px;\r\n    color: white;\r\n    text-overflow: ellipsis;\r\n    margin: 0;\r\n    padding: 0;\r\n}\r\n.SideNav__btnPlanos___1u-AN{\r\n    position: relative;\r\n    float: right;\r\n    vertical-align: baseline;\r\n    margin-right: 30px;\r\n    margin-top: -28px;\r\n    background-color: white;\r\n}\r\n\r\n.SideNav__btnPlanos___1u-AN :hover{\r\n    background-color: #4e544e !important;\r\n    transition: 0.3s ease-in-out;\r\n}\r\n\r\n.SideNav__tanque-lista___1QNFD{\r\n    text-align: left;\r\n    vertical-align: middle;\r\n}\r\n\r\n.SideNav__tanque-lista___1QNFD:hover{\r\n    background-color: rgba(0,0,0,0.05);\r\n}\r\n\r\n::-webkit-scrollbar {\r\n    width: 0;\r\n}\r\n\r\n.SideNav__collapse-button-container___9IpUh{\r\n    position: absolute;\r\n    z-index: 9;\r\n    top: 10px;\r\n    max-width: 408px;\r\n    margin-left: -23px;\r\n    float: right;\r\n    display: block;\r\n    transition: all 0.1s linear;\r\n}\r\n\r\n.SideNav__collapse-button___1E2iw{\r\n    width: 23px;\r\n    height: 51px;\r\n    cursor: pointer;\r\n    background: white;\r\n    border-top: 2px solid whitesmoke;\r\n    border-right: 2px solid whitesmoke;\r\n    border-bottom: 2px solid whitesmoke;\r\n    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);\r\n    margin-top: 9px;\r\n    padding: 0;\r\n    outline: 0;\r\n    font: inherit;\r\n    vertical-align: middle;\r\n    list-style: none;\r\n    overflow: visible;\r\n    transition: all 0.1s linear;\r\n}\r\n\r\nli:hover{\r\n    background-color: rgba(0,0,0,0.3);\r\n}\r\nli{\r\n\r\n    transition: all 0.1s ease-in;\r\n}\r\n\r\n.SideNav__estadisticas-img___2XTK2{\r\n    width: 100%;\r\n    height: auto;\r\n}\r\n.SideNav__greenn___2ezKT{\r\n    color: green;\r\n\r\n}\r\n\r\n.SideNav__redd___xnQLe{\r\n    color: red;\r\n\r\n}\r\n", ""]);
+exports.push([module.i, "#SideNav__sideNav___2n84O{\r\n    z-index: 8;\r\n    width: 408px;\r\n    overflow-x: hidden;\r\n    box-shadow: 15px 0 20px rgba(0,0,0,0.3);\r\n    transition: all 0.1s linear;\r\n    -ms-overflow-style: none;\r\n\r\n}\r\n\r\n.SideNav__locacionDisplay___2XHFY{\r\n    height: 112px;\r\n    padding: 10px 18px 10px 24px;\r\n    border-top: 1px solid #e6e6e6;\r\n}\r\n.SideNav__locacionContent___p-Gpa{\r\n    color: #8c8c8c;\r\n    display: inline-block;\r\n    font-size: 13px;\r\n    line-height: 16px;\r\n    min-width: 1px;\r\n    vertical-align: top;\r\n    -webkit-flex: 1;\r\n    -ms-flex: 1;\r\n    flex: 1;\r\n    width: 250px;\r\n}\r\n.SideNav__locacionDetail___3JPEE{\r\n    padding-top: 2px;\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n    white-space: nowrap;\r\n}\r\n.SideNav__locacionTittle___3qE-5{\r\n    color: #000;\r\n    font-size: 15px;\r\n    line-height: 16px;\r\n    margin-top: 4px;\r\n    padding-bottom: 2px;\r\n    white-space: normal;\r\n    margin-bottom: 5px;\r\n}\r\n.SideNav__searchImgContainer___3qmxv{\r\n    display: inline-block;\r\n    height: 92px;\r\n    width: 80px;\r\n    margin-left: 10px;\r\n    float: right;\r\n    position: relative;\r\n}\r\n.SideNav__searchImg___3uzil{\r\n    background-size: 80px 92px;\r\n    height: 92px;\r\n    width: 80px;\r\n}\r\n\r\n.SideNav__imgContainer___3BybX{\r\n    height: 240px;\r\n    width: auto;\r\n    overflow: hidden;\r\n}\r\n.SideNav__imgDetail___3ewoe{\r\n    width: auto;\r\n    height: 240px;\r\n}\r\n\r\n#SideNav__name___2I3xy {\r\n    background-color: #176EB1;\r\n    height: 100px;\r\n    padding: 15px 20px 15px 20px;\r\n}\r\n\r\nh1{\r\n    font-size: 20px;\r\n    color: white;\r\n    text-overflow: ellipsis;\r\n    margin: 0;\r\n    padding: 0;\r\n}\r\n.SideNav__btnPlanos___1u-AN{\r\n    position: relative;\r\n    float: right;\r\n    vertical-align: baseline;\r\n    margin-right: 30px;\r\n    margin-top: -28px;\r\n    background-color: white;\r\n}\r\n\r\n.SideNav__btnPlanos___1u-AN :hover{\r\n    background-color: #4e544e !important;\r\n    transition: 0.3s ease-in-out;\r\n}\r\n\r\n.SideNav__tanqueLista___2n0Ps{\r\n    text-align: left;\r\n    vertical-align: middle;\r\n}\r\n\r\n.SideNav__tanqueLista___2n0Ps:hover{\r\n    background-color: rgba(0,0,0,0.05);\r\n}\r\n\r\n::-webkit-scrollbar {\r\n    width: 0;\r\n}\r\n\r\n.SideNav__collapseButtonContainer___ztelI{\r\n    position: absolute;\r\n    top: 15px;\r\n    z-index: 20;\r\n    max-width: 408px;\r\n    margin-left: -23px;\r\n    float: right;\r\n    display: block;\r\n    transition: all 0.1s linear;\r\n}\r\n\r\n.SideNav__collapseButton___1WHoT{\r\n    z-index: 20;\r\n    width: 23px;\r\n    height: 51px;\r\n    cursor: pointer;\r\n    background: white;\r\n    border-top: 2px solid whitesmoke;\r\n    border-right: 2px solid whitesmoke;\r\n    border-bottom: 2px solid whitesmoke;\r\n    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);\r\n    margin-top: 9px;\r\n    padding: 0;\r\n    outline: 0;\r\n    font: inherit;\r\n    vertical-align: middle;\r\n    list-style: none;\r\n    overflow: visible;\r\n    transition: all 0.1s linear;\r\n}\r\n\r\nli:hover{\r\n    background-color: rgba(0,0,0,0.3);\r\n}\r\nli{\r\n\r\n    transition: all 0.1s ease-in;\r\n}\r\n\r\n.SideNav__estadisticasImg___1rI9d{\r\n    width: 100%;\r\n    height: auto;\r\n}\r\n.SideNav__greenn___2ezKT{\r\n    color: green;\r\n\r\n}\r\n\r\n.SideNav__redd___xnQLe{\r\n    color: red;\r\n\r\n}\r\n", ""]);
 
 // exports
 exports.locals = {
 	"sideNav": "SideNav__sideNav___2n84O",
-	"locacion-display": "SideNav__locacion-display___1LUIp",
-	"locacion-content": "SideNav__locacion-content___2t1v3",
-	"locacion-detail": "SideNav__locacion-detail___M-Crm",
-	"locacion-tittle": "SideNav__locacion-tittle___Rj3rO",
-	"search-img-container": "SideNav__search-img-container___21hSm",
-	"search-img": "SideNav__search-img___1LU46",
+	"locacionDisplay": "SideNav__locacionDisplay___2XHFY",
+	"locacionContent": "SideNav__locacionContent___p-Gpa",
+	"locacionDetail": "SideNav__locacionDetail___3JPEE",
+	"locacionTittle": "SideNav__locacionTittle___3qE-5",
+	"searchImgContainer": "SideNav__searchImgContainer___3qmxv",
+	"searchImg": "SideNav__searchImg___3uzil",
 	"imgContainer": "SideNav__imgContainer___3BybX",
 	"imgDetail": "SideNav__imgDetail___3ewoe",
 	"name": "SideNav__name___2I3xy",
 	"btnPlanos": "SideNav__btnPlanos___1u-AN",
-	"tanque-lista": "SideNav__tanque-lista___1QNFD",
-	"collapse-button-container": "SideNav__collapse-button-container___9IpUh",
-	"collapse-button": "SideNav__collapse-button___1E2iw",
-	"estadisticas-img": "SideNav__estadisticas-img___2XTK2",
+	"tanqueLista": "SideNav__tanqueLista___2n0Ps",
+	"collapseButtonContainer": "SideNav__collapseButtonContainer___ztelI",
+	"collapseButton": "SideNav__collapseButton___1WHoT",
+	"estadisticasImg": "SideNav__estadisticasImg___1rI9d",
 	"greenn": "SideNav__greenn___2ezKT",
 	"redd": "SideNav__redd___xnQLe"
 };
