@@ -2,10 +2,10 @@ import React from 'react';
 import { render } from 'react-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getMapInfo } from "../redux/actions/actionCreator";
-import s from './styles/Map.ncss';
+import { getMapInfo } from "../../redux/actions/actionCreator";
+import s from '../styles/Map.ncss';
 import RaisedButton from 'material-ui/RaisedButton';
-import * as actionCreator from '../redux/actions/actionCreator';
+import * as actionCreator from '../../redux/actions/actionCreator';
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 class Map extends React.Component{
@@ -32,7 +32,20 @@ class Map extends React.Component{
 
       this.polygon = [];
 
-      setTimeout(()=>this.mostrarRegiones(), 5000);
+  }
+
+  componentWillReceiveProps(nextProps){
+      if(this.props.info !== nextProps.info && this.props.info !== {}){
+          setTimeout(()=>this.mostrarRegiones(), 100);
+      }
+      if(this.props.current !== nextProps.current && nextProps.current!== null){
+          if(nextProps.current.tipo === 'L'){
+              this.mostrarTanques(nextProps.current);
+          }
+          if(nextProps.current.tipo === 'R'){
+              this.mostrarLocaciones(nextProps.current);
+          }
+      }
   }
 
   createPolygon(mapData, object){
@@ -89,39 +102,32 @@ class Map extends React.Component{
       poligono.setMap(this.map);
       this.polygon.push(poligono);
       ((indice) => google.maps.event.addListener(poligono, 'click', () => {
-        //this.removeFromMap();
-        this.props.addToHistory({ vista: 'R', region: indice, locacion: null });
+        this.props.addToHistory(poligono.object);
         this.mostrarLocaciones(poligono.object);
+        this.props.updateCurrent(poligono.object)
         this.map.setCenter(poligono.object.mapData.center);
         this.map.setZoom(poligono.object.mapData.zoom);
       }))(i);
-      google.maps.event.addListener(markerReg, 'click', () => {
-        //this.removeFromMap();
-        this.mostrarLocaciones(poligono.object);
-        this.map.setCenter(poligono.object.mapData.center);
-        this.map.setZoom(poligono.object.mapData.zoom);
-      })
     }
   }
 
   mostrarLocaciones(region){
-    //console.log(region)
     this.removeFromMap();
     this.map.setCenter(region.mapData.center);
     this.map.setZoom(region.mapData.zoom);
     const poligono = this.createPolygon(region.mapData, region);
     poligono.setMap(this.map);
     this.polygon.push(poligono);
-    for(let i = 0; i<this.props.info.locaciones.length; i++){
-      if(this.props.info.locaciones[i].idRegion === region.id){
-        const markerLocaciones = this.createMarker(this.props.info.locaciones[i].mapData, this.props.info.locaciones[i].nombre, this.props.info.locaciones[i]);
+    for(let i = 0; i<region.instalaciones.length; i++){
+      if(region.instalaciones[i].idRegion === region.id){
+        const markerLocaciones = this.createMarker(region.instalaciones[i].mapData, region.instalaciones[i].nombre, region.instalaciones[i]);
         this.markers.push(markerLocaciones);                                                                                  //cooregir position(ultimo siempre)
-        ((indice) => google.maps.event.addListener(markerLocaciones, 'click', () =>{
+        google.maps.event.addListener(markerLocaciones, 'click', () =>{
           this.removeFromMap();
-          var indiceReg = this.props.info.regiones.findIndex(reg => reg.id === region.id);
-          this.props.addToHistory({ vista: 'L', region: indiceReg, locaciones: indice });
+          this.props.updateCurrent(markerLocaciones.object);
+          this.props.addToHistory(markerLocaciones.object);
           this.mostrarTanques(markerLocaciones.object);
-        }))(i);
+        });
       }
     }
   }
@@ -130,7 +136,7 @@ class Map extends React.Component{
     this.removeFromMap();
     this.map.setCenter(locacion.mapData.center);
     this.map.setZoom(locacion.mapData.zoom);
-    const equipos = this.props.info.tanques;
+    const equipos = locacion.tanques;
     for (let i = 0; i < equipos.length; i++) {
       if(equipos[i].idLocacion === locacion.id){
         const marker = this.createMarker(equipos[i].mapData, '', equipos[i]);
@@ -152,19 +158,20 @@ class Map extends React.Component{
   }
 
   goBack(){
-    //console.log(this.props.historial);
-    const hist = this.props.historial[this.props.historial.length-1];
+    const last = this.props.historial[this.props.historial.length-2];
     this.removeFromMap();
     if(this.props.historial.length <= 1) {
       this.mostrarRegiones();
+      this.props.updateCurrent(null);
       this.map.setZoom(10);
-    } else if (hist.vista === 'L'){
-      console.log('REGION',this.props.info.regiones[hist.region]);
-      this.mostrarLocaciones(this.props.info.regiones[hist.region])
-    } else if(hist.vista === 'R'){
-      this.mostrarRegiones()
+      this.map.setCenter(-38.879376, -69.214060);
+    } else if (last.tipo === 'L'){
+      this.mostrarTanques(last)
+    } else if(last.tipo === 'R'){
+      this.mostrarLocaciones(last)
     }
     this.props.volver()
+
   }
 
   render(){

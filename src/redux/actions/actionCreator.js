@@ -35,7 +35,7 @@ const ROOT_URL = 'http://54.234.124.9:3000/api';
 //pedir stado del mapa (thunk)
     export function getMapInfo() {
         return (dispatch) => {
-            axios.get(`${ROOT_URL}/areas`)
+            axios.get(`${ROOT_URL}/areascompletas`)
                 .then(respuesta => dispatch(cargarInfo(respuesta.data)))
         }
     }

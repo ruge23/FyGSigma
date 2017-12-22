@@ -10,10 +10,7 @@ import tanques from './data/tanques'
 // creo un Objeto con el stado por defecto
 const defaultState = {
   dataMap: {
-    mapInfo: {
-      locaciones,
-      tanques,
-    },
+    mapInfo: {},
     mapHistory: []
   },
   selected: {

@@ -6,8 +6,6 @@ function mapReducer(state={}, action) {
   switch(action.type){
 
     case 'MODIFICAR_MAP':
-    console.log('STATE:', state);
-    console.log('ACTION:', action);
       return Object.assign({}, state, { mapHistory: [ ...state.mapHistory, action.historial ]});
 
     case 'VOLVER_MAP':
@@ -15,6 +13,7 @@ function mapReducer(state={}, action) {
 
     case 'CARGAR_INFO':
       const regiones = {regiones: action.info};
+      console.log(regiones);
       return Object.assign({}, state, { mapInfo: regiones });
 
     default:

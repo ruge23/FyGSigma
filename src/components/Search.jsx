@@ -11,16 +11,18 @@ const Search = function(props){
 						</div>
 						<div id={s.searchboxContainer}>
 							<input id={s.searchBox} type="text" placeholder="Buscar.." value={props.value} onChange={props.onChange}/>
-							<div id={s.clearButton}><i className="material-icons" style={{color:"rgba(0,0,0,0.3)"}} >clear</i></div>
+							{props.value === ''? null :(
+								<div id={s.clearButton} onClick={() => props.clear}><i className="material-icons" style={{color:"rgba(0,0,0,0.3)"}} >clear</i></div>
+							)}
 						</div>
 						<div id={s.logoContainer}>
 							<img className={s.horiz} src="../assets/img/ypfLogo.png" />
 						</div>
 					</div>
-					{ props.autocomplete.length === 0 ? null:(
+					{ props.value === '' ? null:(
 						<div className={s.maxHeight}>
-							{props.autocomplete.map(lugar => (
-								<div className={s.searchResult}>
+							{props.autocomplete.map((lugar, index) => (
+								<div className={s.searchResult} onClick={() => props.updateCurrent(lugar)} key={index}>
 									<div className={s.centered}> 
 										{props.mostrar(lugar, s)}
 									</div>
@@ -31,7 +33,7 @@ const Search = function(props){
 					}
 				</div>
     )
-}
+};
 
 export default Search;
 
